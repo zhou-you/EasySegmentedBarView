@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zhouyou.view.segmentedbar.demo.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.xml配置"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/xml_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                app:sbv_empty_segment_text="No segments"
+                app:sbv_segment_gap_width="10dp"
+                app:sbv_segment_text_size="15sp"
+                app:sbv_show_description_text="true"
+                app:sbv_side_style="rounded"
+                app:sbv_side_text_style="twoSided"
+                app:sbv_value_sign_height="30dp"
+                app:sbv_value_sign_round="8dp"
+                app:sbv_value_sign_width="30dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2.代码配置"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/java_code_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3.设置分段规则（AVERAGE/SCALE）"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/rule_avage_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                app:sbv_empty_segment_text="No segments"
+                app:sbv_segment_gap_width="5dp"
+                app:sbv_segment_rule="average"
+                app:sbv_segment_text_size="15sp"
+                app:sbv_show_description_text="true"
+                app:sbv_side_style="rounded"
+                app:sbv_side_text_style="twoSided"
+                app:sbv_value_sign_height="30dp"
+                app:sbv_value_sign_round="8dp"
+                app:sbv_value_sign_width="100dp"
+                />
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/rule_scal_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                app:sbv_empty_segment_text="No segments"
+                app:sbv_segment_gap_width="5dp"
+                app:sbv_segment_rule="scale"
+                app:sbv_segment_text_size="15sp"
+                app:sbv_show_description_text="true"
+                app:sbv_side_style="rounded"
+                app:sbv_side_text_style="twoSided"
+                app:sbv_value_sign_background="@color/colorAccent"
+                app:sbv_value_sign_height="30dp"
+                app:sbv_value_sign_round="8dp"
+                app:sbv_value_sign_width="100dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4.非数字分段"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/without_numeric_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                app:sbv_empty_segment_text="No segments"
+                app:sbv_segment_gap_width="5dp"
+                app:sbv_segment_rule="average"
+                app:sbv_segment_text_size="15sp"
+                app:sbv_show_description_text="false"
+                app:sbv_side_style="angle"
+                app:sbv_side_text_style="twoSided"
+                app:sbv_value_sign_height="30dp"
+                app:sbv_value_sign_round="8dp"
+                app:sbv_value_sign_width="100dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5.自定义设置"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/custom_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                app:sbv_empty_segment_text="No segments"
+                app:sbv_segment_gap_width="5dp"
+                app:sbv_segment_rule="average"
+                app:sbv_segment_text_size="15sp"
+                app:sbv_show_description_text="false"
+                app:sbv_side_style="angle"
+                app:sbv_side_text_style="twoSided"
+                app:sbv_value_sign_height="30dp"
+                app:sbv_value_sign_round="8dp"
+                app:sbv_value_sign_width="100dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6.多个分段"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/many_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                app:sbv_empty_segment_text="No segments"
+                app:sbv_segment_gap_width="3dp"
+                app:sbv_show_description_text="false"
+                app:sbv_show_segment_text="false"
+                app:sbv_side_style="normal"
+                app:sbv_side_text_style="twoSided"
+                app:sbv_value_sign_height="30dp"
+                app:sbv_value_sign_round="8dp"
+                app:sbv_value_sign_width="60dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="7.空分段（没有数据）"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/empty_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                app:sbv_empty_segment_text="No segments"
+                app:sbv_segment_gap_width="3dp"
+                app:sbv_show_description_text="false"
+                app:sbv_show_segment_text="true"
+                app:sbv_side_style="rounded"
+                app:sbv_side_text_style="twoSided"
+                app:sbv_value_sign_height="30dp"
+                app:sbv_value_sign_round="8dp"
+                app:sbv_value_sign_width="60dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="8.bar条样式（ROUNDED/NORMAL/ANGLE）"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/side_style_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="9.Segment文字样式（ONE_SIDED/TWO_SIDED）"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/segment_text_style_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10.设置显示进度的数字、单位"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/unit_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                app:sbv_empty_segment_text="No segments"
+                app:sbv_segment_gap_width="3dp"
+                app:sbv_show_description_text="false"
+                app:sbv_show_segment_text="true"
+                app:sbv_side_style="rounded"
+                app:sbv_side_text_style="twoSided"
+                app:sbv_value_sign_height="30dp"
+                app:sbv_value_sign_round="8dp"
+                app:sbv_value_sign_width="120dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="11.设置进度显示为文本"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/value_txt_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                app:sbv_empty_segment_text="No segments"
+                app:sbv_segment_gap_width="3dp"
+                app:sbv_show_description_text="false"
+                app:sbv_show_segment_text="true"
+                app:sbv_side_style="rounded"
+                app:sbv_side_text_style="twoSided"
+                app:sbv_value_sign_height="30dp"
+                app:sbv_value_sign_round="8dp"
+                app:sbv_value_sign_width="60dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12.设置背景渐变分段"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/bg_colors_bar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                app:sbv_empty_segment_text="No segments"
+                app:sbv_segment_bg="true"
+                app:sbv_segment_endcolor="@color/end_color"
+                app:sbv_segment_gap_width="3dp"
+                app:sbv_segment_startcolor="@color/start_color"
+                app:sbv_show_description_text="false"
+                app:sbv_show_segment_text="false"
+                app:sbv_side_style="rounded"
+                app:sbv_side_text_style="twoSided"
+                app:sbv_value_sign_height="30dp"
+                app:sbv_value_sign_round="8dp"
+                app:sbv_value_sign_width="60dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="13.设置滑块类型（Sign/Slider）"
+                android:textColor="@color/black_54"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/slider_type_bar_view_water"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:sbv_bar_height="15dp"
+                app:sbv_descriptionAlign="Both"
+                app:sbv_descriptionTopAlign="Center"
+                app:sbv_description_text_color="@color/textcolor_99"
+                app:sbv_description_text_size="13sp"
+                app:sbv_segment_bg="false"
+                app:sbv_segment_gap_width="0dp"
+                app:sbv_show_description_text="true"
+                app:sbv_show_description_top_text="true"
+                app:sbv_show_segment_text="false"
+                app:sbv_side_style="rounded"
+                app:sbv_side_text_style="oneSided"
+                app:sbv_sliderImg="@mipmap/slider2"
+                app:sbv_sliderType="Slider"
+                />
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/slider_type_bar_view_oil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:sbv_bar_height="15dp"
+                app:sbv_descriptionAlign="Both"
+                app:sbv_descriptionTopAlign="Center"
+                app:sbv_description_text_color="@color/textcolor_99"
+                app:sbv_description_text_size="13sp"
+                app:sbv_segment_bg="false"
+                app:sbv_segment_gap_width="0dp"
+                app:sbv_show_description_text="true"
+                app:sbv_show_description_top_text="true"
+                app:sbv_show_segment_text="false"
+                app:sbv_side_style="rounded"
+                app:sbv_side_text_style="oneSided"
+                app:sbv_sliderImg="@mipmap/slider2"
+                app:sbv_sliderType="Slider"
+                />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

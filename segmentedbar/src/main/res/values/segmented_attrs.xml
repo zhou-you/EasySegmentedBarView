@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SegmentedBarView">
+        <attr name="sbv_show_segment_text" format="boolean"/>
+        <attr name="sbv_show_description_text" format="boolean"/>
+        <attr name="sbv_show_description_top_text" format="boolean"/>
+        <attr name="sbv_show_sign_boder" format="boolean"/>
+        <attr name="sbv_segment_bg" format="boolean"/>
+        <attr name="sbv_segment_startcolor" format="color"/>
+        <attr name="sbv_segment_endcolor" format="color"/>
+
+        <attr name="sbv_empty_segment_text" format="string"/>
+        <attr name="sbv_value_segment_text" format="string"/>
+
+        <attr name="sbv_value_sign_background" format="color"/>
+        <attr name="sbv_value_sign_border_color" format="color"/>
+        <attr name="sbv_description_text_color" format="color"/>
+        <attr name="sbv_value_sign_border_size" format="dimension"/>
+        <attr name="sbv_empty_segment_background" format="color"/>
+
+        <attr name="sbv_description_text_size" format="dimension"/>
+        <attr name="sbv_value_text_size" format="dimension"/>
+        <attr name="sbv_segment_text_size" format="dimension"/>
+
+        <attr name="sbv_bar_height" format="dimension"/>
+        <attr name="sbv_value_sign_height" format="dimension"/>
+        <attr name="sbv_value_sign_width" format="dimension"/>
+        <attr name="sbv_arrow_height" format="dimension"/>
+        <attr name="sbv_arrow_width" format="dimension"/>
+        <attr name="sbv_description_box_height" format="dimension"/>
+        <attr name="sbv_description_box_top_height" format="dimension"/>
+        <attr name="sbv_sliderImg" format="reference"/>
+        <attr name="sbv_segment_gap_width" format="dimension"/>
+        <attr name="sbv_value_sign_round" format="dimension"/>
+
+        <attr name="sbv_sliderType" format="enum">
+            <enum name="Sign" value="0"/>
+            <enum name="Slider" value="1"/>
+        </attr>
+        <attr name="sbv_descriptionAlign" format="enum">
+            <enum name="Center" value="0"/>
+            <enum name="Both" value="1"/>
+        </attr>
+        <attr name="sbv_descriptionTopAlign" format="enum">
+            <enum name="Center" value="0"/>
+            <enum name="Both" value="1"/>
+        </attr>
+
+        <attr name="sbv_side_style" format="enum">
+            <enum name="normal" value="0"/>
+            <enum name="rounded" value="1"/>
+            <enum name="angle" value="2"/>
+        </attr>
+        <attr name="sbv_side_text_style" format="enum">
+            <enum name="oneSided" value="0"/>
+            <enum name="twoSided" value="1"/>
+        </attr>
+        <attr name="sbv_segment_rule" format="enum">
+            <enum name="scale" value="0"/>
+            <enum name="average" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>

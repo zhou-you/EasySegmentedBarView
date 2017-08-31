@@ -1,0 +1,16 @@
+<resources>
+    <dimen name="sbv_description_text_size">14sp</dimen>
+    <dimen name="sbv_value_text_size">14sp</dimen>
+    <dimen name="sbv_segment_text_size">14sp</dimen>
+
+    <dimen name="sbv_bar_height">24dp</dimen>
+    <dimen name="sbv_value_sign_height">32dp</dimen>
+    <dimen name="sbv_value_sign_width">72dp</dimen>
+    <dimen name="sbv_arrow_height">5dp</dimen>
+    <dimen name="sbv_arrow_width">10dp</dimen>
+    <dimen name="sbv_description_box_height">24dp</dimen>
+    <dimen name="sbv_value_sign_border_size">2dp</dimen>
+
+    <dimen name="sbv_segment_gap_width">2dp</dimen>
+    <dimen name="sbv_value_sign_round">4dp</dimen>
+</resources>

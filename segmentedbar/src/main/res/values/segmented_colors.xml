@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sbv_value_sign_background">#7492E2</color>
+    <color name="sbv_value_sign_boder_color">#7492E2</color>
+    <color name="sbv_empty_segment_background">#858585</color>
+    <color name="sbv_segment_bg_startcolor">@android:color/holo_red_light</color>
+    <color name="sbv_segment_bg_endcolor">@android:color/holo_green_light</color>
+    <!--<color name="sbv_value_sign_text">#fff</color>-->
+    <!--<color name="sbv_segment_text">#fff</color>-->
+    <!--<color name="sbv_description_text">#444</color>-->
+</resources>
