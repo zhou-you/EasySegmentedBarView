@@ -24,8 +24,8 @@ QQ群： 581235049（建议使用QQ群，邮箱使用较少，可能看的不及
 ##### 欢迎加入QQ交流群
 ![](http://img.blog.csdn.net/20170601165330238)
 ## 演示（请star支持）
-![](http://img.blog.csdn.net/20170901141711505) ![](http://img.blog.csdn.net/20170901142235245)
-![](http://img.blog.csdn.net/20170901142319497) ![](http://img.blog.csdn.net/20170901142334135)
+![](http://img.blog.csdn.net/20170901145113429) ![](http://img.blog.csdn.net/20170901145300537)![](http://img.blog.csdn.net/20170901145435768) 
+![](http://img.blog.csdn.net/20170901142334135)
 ![](http://img.blog.csdn.net/20170901142345848)![](http://img.blog.csdn.net/20170901142357893)
 ## 版本说明
 #### 当前版本
@@ -38,13 +38,12 @@ V1.0.0
 [点击查看更新日志](https://github.com/zhou-you/EasySegmentedBarView/blob/master/update.md)
 ## 用法介绍
 目前只支持主流开发工具AndtoidStudio的使用，没有提供Eclipse使用方式.
-本项目Demo的网络请求的服务器地址为了安全，把url去掉了，但是Demo程序中的示例都是ok的
-#### Demo下载 
+### Demo下载 
 [点击下载](https://github.com/zhou-you/EasySegmentedBarView/blob/master/segmentedbar_demo.apk?raw=true)
-#### build.gradle设置
+### build.gradle设置
 ```
 dependencies {
- compile 'com.zhouyou:segmentedbar:2.0.0'
+ compile 'com.zhouyou:segmentedbar:1.0.0'
 }
 ```
 想查看所有版本，请点击下面地址。
