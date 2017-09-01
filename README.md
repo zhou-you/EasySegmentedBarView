@@ -2,7 +2,7 @@
 
 本库主要提供一个简单易用的自定义分段控件，方便快速实现分段效果，支持xml配置、代码配置、分段规则按均分/比例分、数字分段、文本分段、渐变分段、bar条样式正常/圆形/三角形，segment文字样式、进度设置、进度指示标记类型设置、分段描述设置、分段间距、其它更多自定义设置等功能。
 
-## 特点
+## 功能
 - 支持xml配置；
 - 支持通过代码配置；
 - 支持bar条分段规则按均分/比例分；
@@ -24,8 +24,9 @@ QQ群： 581235049（建议使用QQ群，邮箱使用较少，可能看的不及
 ##### 欢迎加入QQ交流群
 ![](http://img.blog.csdn.net/20170601165330238)
 ## 演示（请star支持）
-![](http://img.blog.csdn.net/20170608210826622)![](http://img.blog.csdn.net/20170609092207665) 
-![](http://img.blog.csdn.net/20170609093543947)![](http://img.blog.csdn.net/20170609092405916)
+![](http://img.blog.csdn.net/20170901141711505) ![](http://img.blog.csdn.net/20170901142235245)
+![](http://img.blog.csdn.net/20170901142319497) ![](http://img.blog.csdn.net/20170901142334135)
+![](http://img.blog.csdn.net/20170901142345848)![](http://img.blog.csdn.net/20170901142357893)
 ## 版本说明
 #### 当前版本
 
@@ -33,9 +34,8 @@ V1.0.0
 
 - 初始版本上传
 
-
 #### 更新日志
-[点击查看更新日志](https://github.com/zhou-you/RxEasyHttp/blob/master/update.md)
+[点击查看更新日志](https://github.com/zhou-you/EasySegmentedBarView/blob/master/update.md)
 ## 用法介绍
 目前只支持主流开发工具AndtoidStudio的使用，没有提供Eclipse使用方式.
 本项目Demo的网络请求的服务器地址为了安全，把url去掉了，但是Demo程序中的示例都是ok的
@@ -50,6 +50,7 @@ dependencies {
 想查看所有版本，请点击下面地址。
 
 Latest release: [https://jcenter.bintray.com/com/zhouyou/segmentedbar/](https://jcenter.bintray.com/com/zhouyou/segmentedbar/)
+
 ## 更多详细讲解，敬请期待！！！
 ## 支持开源
 乐于赞赏，感谢朋友们的支持和鼓励，让我们一起努力做一些好东西! 
