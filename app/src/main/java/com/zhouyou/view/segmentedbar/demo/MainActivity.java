@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("分段组件(SegmentedBarView)");
+        //setTitle("分段组件(SegmentedBarView)");
         javaCodeLayout = (LinearLayout) findViewById(R.id.java_code_layout);
         sideStyleLayout = (LinearLayout) findViewById(R.id.side_style_layout);
         segmentTextStyleLayout = (LinearLayout) findViewById(R.id.segment_text_style_layout);
