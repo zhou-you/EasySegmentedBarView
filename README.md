@@ -32,13 +32,8 @@ QQ群： 581235049（建议使用QQ群，邮箱使用较少，可能看的不及
 
 ## 版本说明
 #### 当前版本
+[![release](https://img.shields.io/badge/release-v1.0.1-orange.svg)](https://github.com/zhou-you/EasySegmentedBarView/blob/master/update.md)
 
-V1.0.0
-
-- 初始版本上传
-
-#### 更新日志
-[点击查看更新日志](https://github.com/zhou-you/EasySegmentedBarView/blob/master/update.md)
 ## 用法介绍
 目前只支持主流开发工具AndtoidStudio的使用，没有提供Eclipse使用方式.
 ### Demo下载 
@@ -47,7 +42,7 @@ V1.0.0
 ### build.gradle设置
 ```
 dependencies {
- compile 'com.zhouyou:segmentedbar:1.0.0'
+ compile 'com.zhouyou:segmentedbar:1.0.1'
 }
 ```
 想查看所有版本，请点击下面地址。
