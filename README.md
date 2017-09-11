@@ -20,9 +20,10 @@
 邮箱地址： 478319399@qq.com
 QQ群： 581235049（建议使用QQ群，邮箱使用较少，可能看的不及时）
 本群旨在为使用我的github项目的人提供方便，如果遇到问题欢迎在群里提问。
+
 [![github](https://img.shields.io/badge/GitHub-zhou--you-green.svg)](https://github.com/zhou-you)   [![csdn](https://img.shields.io/badge/CSDN-zhouy478319399-green.svg)](http://blog.csdn.net/zhouy478319399)
 
-##### 欢迎加入QQ交流群
+#### 欢迎加入QQ交流群
 ![](http://img.blog.csdn.net/20170601165330238)
 ## 演示（请star支持）
 ![](http://img.blog.csdn.net/20170901150322496) ![](http://img.blog.csdn.net/20170901150342851) ![](http://img.blog.csdn.net/20170901150354651)
