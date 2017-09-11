@@ -1,1 +1,2 @@
-include ':app', ':segmentedbar'
+//include ':app'
+include ':segmentedbar'
