@@ -19,8 +19,9 @@
 ## 联系方式
 邮箱地址： 478319399@qq.com
 QQ群： 581235049（建议使用QQ群，邮箱使用较少，可能看的不及时）
-本群旨在为使用我的[github](https://github.com/zhou-you)项目的人提供方便，如果遇到问题欢迎在群里提问。一个人的能力也有限，希望一起学习一起进步。
-关注我的[github](https://github.com/zhou-you)，了解我的最新项目。关注我的[博客](http://blog.csdn.net/zhouy478319399)，阅读我的最新文章。
+本群旨在为使用我的github项目的人提供方便，如果遇到问题欢迎在群里提问。
+[![github](https://img.shields.io/badge/GitHub-zhou--you-green.svg)](https://github.com/zhou-you)   [![csdn](https://img.shields.io/badge/CSDN-zhouy478319399-green.svg)](http://blog.csdn.net/zhouy478319399)
+
 ##### 欢迎加入QQ交流群
 ![](http://img.blog.csdn.net/20170601165330238)
 ## 演示（请star支持）
@@ -40,7 +41,8 @@ V1.0.0
 ## 用法介绍
 目前只支持主流开发工具AndtoidStudio的使用，没有提供Eclipse使用方式.
 ### Demo下载 
-[点击下载](https://github.com/zhou-you/EasySegmentedBarView/blob/master/segmentedbar_demo.apk?raw=true)
+[![downloads](https://img.shields.io/badge/downloads-460k-blue.svg)](https://github.com/zhouyou/EasySegmentedBarView/blob/master/segmentedbar_demo.apk?raw=true)
+
 ### build.gradle设置
 ```
 dependencies {
@@ -49,8 +51,7 @@ dependencies {
 ```
 想查看所有版本，请点击下面地址。
 
-Latest release: [https://jcenter.bintray.com/com/zhouyou/segmentedbar/](https://jcenter.bintray.com/com/zhouyou/segmentedbar/)
-
+[![jcenter](https://img.shields.io/badge/Jcenter-Latest%20Release-orange.svg)](https://jcenter.bintray.com/com/zhouyou/segmentedbar/)
 ## 更多详细讲解，敬请期待！！！
 ## 支持开源
 乐于赞赏，感谢朋友们的支持和鼓励，让我们一起努力做一些好东西! 
