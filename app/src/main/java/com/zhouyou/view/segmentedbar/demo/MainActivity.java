@@ -30,7 +30,8 @@ import com.zhouyou.view.segmentedbar.SegmentedBarViewSideTextStyle;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    LinearLayout javaCodeLayout,sideStyleLayout,segmentTextStyleLayout;
+    LinearLayout javaCodeLayout, sideStyleLayout, segmentTextStyleLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,10 +59,14 @@ public class MainActivity extends AppCompatActivity {
         createBarViewWithBgColors();
         createBarViewWithWaterSliderType();
         createBarViewWithOilSliderType();
+        createBarViewWithOilSliderType2();
+        createBarViewWithOilSliderType3();
+        createBarViewWithOilSliderType4();
+        createBarViewWithOilSliderType5();
     }
-    
+
     //通过xml配置BarView
-    public void createNormalBarViewByXml(){
+    public void createNormalBarViewByXml() {
         final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.xml_bar_view);
         final ArrayList<Segment> segments = new ArrayList<>();
         segments.add(new Segment(0, 50, "正常", Color.RED));
@@ -109,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //分段规则-均分
-    public void createBarViewRuleByAvage(){
+    public void createBarViewRuleByAvage() {
         final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.rule_avage_bar_view);
         ArrayList<Segment> segments = new ArrayList<>();
         Segment segment = new Segment(0, 4.5f, "Low", Color.parseColor("#EF3D2F"));
@@ -126,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //分段规则-比例分配
-    public void createBarViewRuleByScal(){
+    public void createBarViewRuleByScal() {
         final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.rule_scal_bar_view);
         ArrayList<Segment> segments = new ArrayList<>();
         Segment segment = new Segment(0, 4.5f, "Low", Color.parseColor("#EF3D2F"));
@@ -143,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //非数字分段 只支持均分 默认均分
-    public void createBarViewWithoutNumericValue(){
+    public void createBarViewWithoutNumericValue() {
         final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.without_numeric_bar_view);
         ArrayList<Segment> segments = new ArrayList<>();
         Segment segment = new Segment("Negative Left", null, Color.parseColor("#EF3D2F"));
@@ -223,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
         barView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         barView.setPadding(0, getResources().getDimensionPixelSize(R.dimen.vertical_padding), 0, 0);
     }
-    
+
     //bar条样式-圆角
     private void createNormalBarViewSideStyleRounded() {
         SegmentedBarView barView = new SegmentedBarView(this);
@@ -244,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
         barView.setPadding(0, getResources().getDimensionPixelSize(R.dimen.vertical_padding), 0, 0);
         sideStyleLayout.addView(barView);
     }
-    
+
     //bar条样式-正常
     private void createNormalBarViewSideStyleNormal() {
         SegmentedBarView barView = new SegmentedBarView(this);
@@ -341,6 +346,7 @@ public class MainActivity extends AppCompatActivity {
         barView.setShowDescriptionText(true);
         barView.setSideStyle(SegmentedBarViewSideStyle.ANGLE);
     }
+
     //设置显示进度-中文
     private void createNormalBarViewWithValueTxt() {
         final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.value_txt_bar_view);
@@ -351,7 +357,7 @@ public class MainActivity extends AppCompatActivity {
         segments.add(segment2);
         Segment segment3 = new Segment(6.5f, 20f, "High", Color.parseColor("#EF3D2F"));
         segments.add(segment3);
-        barView.setValue(4.96f,"正常");//显示的时候用“正常代替” 4.96f
+        barView.setValue(4.96f, "正常");//显示的时候用“正常代替” 4.96f
         barView.setSegments(segments);
         barView.setShowDescriptionText(true);
         barView.setSideStyle(SegmentedBarViewSideStyle.ANGLE);
@@ -372,7 +378,7 @@ public class MainActivity extends AppCompatActivity {
         //barView.setGradientBgSegmentColor(Color.RED,Color.GREEN);//通过代码设置渐变
         barView.setShowDescriptionText(true);
     }
-    
+
     //设置滑块类型
     private void createBarViewWithWaterSliderType() {
         final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_water);
@@ -389,6 +395,7 @@ public class MainActivity extends AppCompatActivity {
         barView.setValue(30.0f);
         barView.setSegments(segments);
     }
+
     //设置滑块类型
     private void createBarViewWithOilSliderType() {
         final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_oil);
@@ -405,5 +412,73 @@ public class MainActivity extends AppCompatActivity {
         barView.setValue(80.0f);
         barView.setSegments(segments);
     }
-    
+
+    private void createBarViewWithOilSliderType2() {
+        final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_oil2);
+        int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a"), Color.parseColor("#72ab2a"), Color.YELLOW};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment(0.0f, 30.0f, "", colors[0]).setDescriptionText("").setTopDescriptionText("缺油");
+        segments.add(segment1);
+        //中间显示用40%&60%  “&” 分割
+        Segment segment2 = new Segment(30.0f, 50.0f, "", colors[1]).setDescriptionText("52.1%&63.2%").setTopDescriptionText("正常");
+        segments.add(segment2);
+        Segment segment3 = new Segment(60.0f, 80.0f, "", colors[2]).setDescriptionText("&80.3%").setTopDescriptionText("偏油");
+        segments.add(segment3);
+        Segment segment4 = new Segment(80.0f, 100.0f, "", colors[3]).setDescriptionText("").setTopDescriptionText("严重");
+        segments.add(segment4);
+        barView.setShowDescriptionText(true);
+        barView.setValue(70.0f);
+        barView.setSegments(segments);
+    }
+
+    private void createBarViewWithOilSliderType3() {
+        final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_oil3);
+        int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a"), Color.parseColor("#72ab2a"), Color.YELLOW, Color.RED};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment(0.0f, 20.0f, "", colors[0]).setDescriptionText("").setTopDescriptionText("缺油");
+        segments.add(segment1);
+        //中间显示用40%&60%  “&” 分割
+        Segment segment2 = new Segment(20.0f, 45.0f, "", colors[1]).setDescriptionText("52.1%&63.2%").setTopDescriptionText("正常");
+        segments.add(segment2);
+        Segment segment3 = new Segment(45.0f, 60.0f, "", colors[2]).setDescriptionText("&70.3%").setTopDescriptionText("偏油");
+        segments.add(segment3);
+        Segment segment4 = new Segment(60.0f, 80.0f, "", colors[3]).setDescriptionText("&80.2%").setTopDescriptionText("严重");
+        segments.add(segment4);
+        Segment segment5 = new Segment(80.0f, 100.0f, "", colors[4]).setDescriptionText("").setTopDescriptionText("糟糕");
+        segments.add(segment5);
+        barView.setShowDescriptionText(true);
+        barView.setValue(55.0f);
+        barView.setSegments(segments);
+    }
+
+    //设置滑块类型
+    private void createBarViewWithOilSliderType4() {
+        final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_oil4);
+        int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a")};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment(0.0f, 40.0f, "", colors[0]).setDescriptionText("").setTopDescriptionText("缺油");
+        segments.add(segment1);
+        //中间显示用40%&60%  “&” 分割
+        Segment segment2 = new Segment(40.0f, 100.0f, "", colors[1]).setDescriptionText("40%&").setTopDescriptionText("正常");
+        segments.add(segment2);
+        barView.setShowDescriptionText(true);
+        barView.setValue(60.0f);
+        barView.setSegments(segments);
+    }
+
+    //设置滑块类型
+    private void createBarViewWithOilSliderType5() {
+        final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_oil5);
+        int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a")};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment(0.0f, 40.0f, "", colors[0]).setDescriptionText("00").setTopDescriptionText("缺油");
+        segments.add(segment1);
+        //中间显示用40%&60%  “&” 分割
+        Segment segment2 = new Segment(40.0f, 100.0f, "", colors[1]).setDescriptionText("40%&100%").setTopDescriptionText("正常");
+        segments.add(segment2);
+        barView.setShowDescriptionText(true);
+        barView.setValue(60.0f);
+        barView.setSegments(segments);
+    }
+
 }
