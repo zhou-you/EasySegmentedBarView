@@ -805,11 +805,24 @@ public class SegmentedBarView extends View {
             canvas.drawText(text, right - textWidth / 2, (top + bottom) / 2 + textOffset, paint);
             return;
         }
-        if (index % 2 == 1) {//如果不是在两端  对2求余
+        /*if (index % 2 == 1) {//如果不是在两端  对2求余
             if (text.contains("&")) {//必须是&分割
                 String[] texts = TextUtils.split(text, "&");
                 canvas.drawText(texts[0], left, (top + bottom) / 2 + textOffset, paint);
                 canvas.drawText(texts[1], right, (top + bottom) / 2 + textOffset, paint);
+            }
+        } else {
+            canvas.drawText(text, right - textWidth / 2, (top + bottom) / 2 + textOffset, paint);
+        }*/
+        if (!isLeftSegment&&!isRightSegment) {//如果不是在两端  对2求余
+            if (text.contains("&")) {//必须是&分割
+                String[] texts = TextUtils.split(text, "&");
+                if (index % 2 == 1){
+                    canvas.drawText(texts[0], left, (top + bottom) / 2 + textOffset, paint);
+                    canvas.drawText(texts[1], right, (top + bottom) / 2 + textOffset, paint);
+                }else{
+                    canvas.drawText(texts[1], right, (top + bottom) / 2 + textOffset, paint);
+                }
             }
         } else {
             canvas.drawText(text, right - textWidth / 2, (top + bottom) / 2 + textOffset, paint);
