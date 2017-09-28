@@ -33,8 +33,10 @@
 ## 版本说明
 [![release](https://img.shields.io/badge/release-v1.0.1-orange.svg)](https://github.com/zhou-you/EasySegmentedBarView/blob/master/update.md)
 
-##Demo下载 
+##Demo下载
+
 [![downloads](https://img.shields.io/badge/downloads-460k-blue.svg)](https://github.com/zhouyou/EasySegmentedBarView/blob/master/segmentedbar_demo.apk?raw=true)
+
 ## 用法介绍
 ### build.gradle设置
 
