@@ -105,7 +105,9 @@ dependencies {
 |   sbv_descriptionTopAlign|enum| Center   |分段条上部部描述文字对齐方式支持Center/Both模式，Center:居中显示 ，Both：两端显示    |
 |   sbv_segment_rule|enum| average |设置分段规则scale/average模式，scale：按比例分段  average：平均分段   | 
 ### 在代码中
-#### 通过findViewById获取SegmentedBarView
+
+- #### 通过findViewById获取SegmentedBarView
+
 ```
        SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.barView);
         ArrayList<Segment> segments = new ArrayList<>();
@@ -121,7 +123,9 @@ dependencies {
         //barView.setValue(13.96f,"Optimal");
         barView.setSegments(segments);
 ```
-#### 通过布局动态添加SegmentedBarView
+
+- #### 通过布局动态添加SegmentedBarView
+
 ```
        SegmentedBarView barView = new SegmentedBarView(this);
         ArrayList<Segment> segments = new ArrayList<>();
@@ -141,7 +145,9 @@ dependencies {
         barView.setPadding(0, getResources().getDimensionPixelSize(R.dimen.vertical_padding), 0, 0);
         sideStyleLayout.addView(barView);
 ```
-#### 通过Builder方式构建SegmentedBarView
+
+- #### 通过Builder方式构建SegmentedBarView
+
 ```
         ArrayList<Segment> segments = new ArrayList<>();
         Segment segment = new Segment(0, 4.5f, "Low", Color.parseColor("#EF3D2F"));
