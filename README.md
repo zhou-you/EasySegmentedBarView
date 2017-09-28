@@ -7,63 +7,33 @@
 
 
 ## 功能
-
 - 支持xml配置；
-
 - 支持通过代码配置；
-
 - 支持bar条分段规则按均分/比例分；
-
 - 支持数字分段、文本分段；
-
 - 支持bar条渐变分段；
-
 - 支持设置bar条side样式正常/圆形/三角形；
-
 - 支持segment文字样式；
-
 - 支持进度设置，unit单位显示，进度为数字或指定文本；
-
 - 支持进度指示标记类型设置,上部显示/覆盖叠加显示；
-
 - 支持进度指示三角形是否显示；
-
 - 支持分段间距设置；
-
 - 支持其它更多自定义设置、包括颜色、长宽、间距等；
 
-
-
 ## 关于我
-
 [![github](https://img.shields.io/badge/GitHub-zhou--you-green.svg)](https://github.com/zhou-you)   [![csdn](https://img.shields.io/badge/CSDN-zhouy478319399-green.svg)](http://blog.csdn.net/zhouy478319399)
-
 ## 联系方式
-
 本群旨在为使用我github项目的人提供方便，如果遇到问题欢迎在群里提问。
-
 #### 欢迎加入QQ交流群:581235049
-
 ![](http://img.blog.csdn.net/20170601165330238)
-
 ## 演示（请star支持）
-
 ![](http://img.blog.csdn.net/20170901150322496) ![](http://img.blog.csdn.net/20170901150342851) ![](http://img.blog.csdn.net/20170901150354651)
-
-
-
 ![](http://img.blog.csdn.net/20170901150411893) ![](http://img.blog.csdn.net/20170901150421896) ![](http://img.blog.csdn.net/20170901150433725)
 
-
-
 ## 版本说明
-
 [![release](https://img.shields.io/badge/release-v1.0.1-orange.svg)](https://github.com/zhou-you/EasySegmentedBarView/blob/master/update.md)
-
 ##Demo下载 
-
 [![downloads](https://img.shields.io/badge/downloads-460k-blue.svg)](https://github.com/zhouyou/EasySegmentedBarView/blob/master/segmentedbar_demo.apk?raw=true)
-
 ## 用法介绍
 ### build.gradle设置
 
@@ -73,11 +43,8 @@ dependencies {
 }
 
 ```
-
 想查看所有版本，请点击下面地址。
-
 [![jcenter](https://img.shields.io/badge/Jcenter-Latest%20Release-orange.svg)](https://jcenter.bintray.com/com/zhouyou/segmentedbar/)
-
 ### 在xml布局中
 ```
 <com.zhouyou.view.segmentedbar.SegmentedBarView
