@@ -199,6 +199,10 @@ dependencies {
 
 ### Other
 其它更多设置和使用方法，请参考Demo
+### 感谢
+该库部分思想借鉴了以下项目：
+[https://github.com/gspd-mobi/SegmentedBarView-Android](https://github.com/gspd-mobi/SegmentedBarView-Android)
+在此特别感谢上述作者，喜欢原作的可以去使用原项目。同时欢迎大家下载体验本项目，如果使用过程中遇到什么问题，欢迎反馈。
 
 ## 支持开源
 
