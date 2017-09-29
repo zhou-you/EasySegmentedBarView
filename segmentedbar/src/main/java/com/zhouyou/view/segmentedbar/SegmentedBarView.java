@@ -764,7 +764,7 @@ public class SegmentedBarView extends View {
         return value == null && valueSegment == null;
     }
 
-    public void drawTextCentredInRect(Canvas canvas, Paint paint, String text, Rect outsideRect) {
+    private void drawTextCentredInRect(Canvas canvas, Paint paint, String text, Rect outsideRect) {
         drawTextCentredInRectWithSides(canvas, paint, text, outsideRect.left, outsideRect.top, outsideRect.right,
                 outsideRect.bottom);
     }
@@ -782,7 +782,7 @@ public class SegmentedBarView extends View {
      * @param isLeftSegment
      * @param isRightSegment
      */
-    public void drawTextLeftRightInRectBothSides(Canvas canvas, Paint paint, String text, float left, float top,
+    private void drawTextLeftRightInRectBothSides(Canvas canvas, Paint paint, String text, float left, float top,
                                                  float right, float bottom, boolean isLeftSegment, boolean
                                                          isRightSegment, int index) {
         paint.setTextAlign(Paint.Align.CENTER);
@@ -829,7 +829,7 @@ public class SegmentedBarView extends View {
         }
     }
 
-    public void drawTextCentredInRectWithSides(Canvas canvas, Paint paint, String text, float left, float top, float
+    private void drawTextCentredInRectWithSides(Canvas canvas, Paint paint, String text, float left, float top, float
             right, float bottom) {
         paint.setTextAlign(Paint.Align.CENTER);
 
