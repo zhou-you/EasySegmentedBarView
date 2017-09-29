@@ -106,7 +106,7 @@ dependencies {
 |   sbv_segment_rule|enum| average |设置分段规则scale/average模式，scale：按比例分段  average：平均分段   | 
 ### 在代码中
 
-- #### 通过findViewById获取SegmentedBarView
+#### 方式一
 
 ```
        SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.barView);
@@ -124,7 +124,7 @@ dependencies {
         barView.setSegments(segments);
 ```
 
-- #### 通过布局动态添加SegmentedBarView
+#### 方式二
 
 ```
        SegmentedBarView barView = new SegmentedBarView(this);
@@ -146,7 +146,7 @@ dependencies {
         sideStyleLayout.addView(barView);
 ```
 
-- #### 通过Builder方式构建SegmentedBarView
+#### 方式三
 
 ```
         ArrayList<Segment> segments = new ArrayList<>();
@@ -167,6 +167,39 @@ dependencies {
         barView.setPadding(0, getResources().getDimensionPixelSize(R.dimen.vertical_padding), 0, 0);
         javaCodeLayout.addView(barView);
 ```
+### 具体方法设置
+| 方法 | 说明 |
+|--------|--------|
+|setBarHeight(int barHeight)|     设置分段条高度   |
+|setDescriptionBoxHeight(int descriptionBoxHeight)|    分段条底部部描述文字方块高度    |
+|setDescriptionTextColor(int descriptionTextColor)|   分段条底部描述文字颜色     |
+|setDescriptionTextSize(int descriptionTextSize)|   分段条底部描述文字字体大小      |
+|setDrawSegmentBg(boolean drawSegmentBg)|   设置是否显示分段条背景    |
+|setEmptySegmentColor(int emptySegmentColor)|   设置没有分段时分段条颜色     |
+|setGapWidth(int gapWidth)|     设置分段之间的间距   |
+|setGradientBgSegmentColor(int startColor, int endColor)|   设置分段条背景的渐变色，启始颜色值和结束颜色值     |
+|setSegments(List<Segment> segments)|   设置分段集合     |
+|setSegmentSideRule(int sideRule)|     设置分段规则scale/average模式，scale：按比例分段  average：平均分段      |
+|setSegmentTextColor(int segmentTextColor)|   分段条上文字颜色     |
+|setSegmentTextSize(int segmentTextSize)|   分段条上文字字体大小     |
+|setShowDescriptionText(boolean showDescriptionText)|    是否显示分段条底部的描述文字    |
+|setShowSegmentText(boolean showSegmentText)| 是否显示分段条上的文字       |
+|setSideStyle(int sideStyle)| 分段条样式normal/rounded/angle,normal:正常样式 rounded:圆角样式  angle:三角样式 ，例如：setSideStyle(SegmentedBarViewSideStyle.NORMAL)   | 
+|setSideTextStyle(int sideTextStyle)|    分段条上文字显示样式`SegmentedBarViewSideTextStyle.TWO_SIDED`和`SegmentedBarViewSideTextStyle.ONE_SIDED `  |
+|setUnit(String unit)|   设置单位 ，例如："`ml<sup>2</sup>`"    |
+|**setValue(Float value)**|    设置当前进度值  |
+|**setValue(float value, String valueText)**|   设置当前进度值，例如（80，“优秀”）,进度框上文字不会显示80，会显示“优秀”，主要用于转换使用 |
+|setValueSegment(Integer valueSegment)|   设置文字分段时，进度位置，例如：分3段，从0开始  ValueSegment=1，表示进度块在第二个位置上展示   |
+|setValueSegmentText(String valueSegmentText)|  设置分段进度块上的文字描述，配合setValueSegment使用，只针对文字分段没有数字进度，具体看Demo4，非数字分段      |
+|setValueSignColor(int valueSignColor)|   进度框背景颜色     |
+|setValueSignSize(int width, int height)|    进度框大小设置    |
+|setValueTextColor(int valueTextColor)|   进度框上文字字体颜色     |
+|setValueTextSize(int valueTextSize)|    进度框上文字字体大小    |
+|setValueWithUnit(Float value, String unitHtml)|    设置有单位的进度    |
+
+### Other
+其它更多设置和使用方法，请参考Demo
+
 ## 支持开源
 
 乐于赞赏，感谢朋友们的支持和鼓励，让我们一起努力做一些好东西! 
