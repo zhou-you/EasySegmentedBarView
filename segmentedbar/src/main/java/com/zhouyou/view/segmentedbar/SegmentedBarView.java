@@ -129,6 +129,7 @@ public class SegmentedBarView extends View {
     private int value_sign_border_size;
     private boolean show_sign_boder;
     private int sideRule;                                          //设置分段规则
+    private int value_sign_border_color;
 
     public SegmentedBarView(Context context) {
         super(context);
@@ -143,7 +144,6 @@ public class SegmentedBarView extends View {
 
     private void init(Context context, AttributeSet attrs) {
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.SegmentedBarView, 0, 0);
-        int value_sign_border_color;
         try {
             Resources resources = getResources();
             sliderImage = a.getResourceId(R.styleable.SegmentedBarView_sbv_sliderImg, -1);
@@ -684,12 +684,7 @@ public class SegmentedBarView extends View {
 
             drawTriangle(canvas, point1, point2, point3, fillPaint);
             if (show_sign_boder) {
-                drawTriangle(canvas, point1, point2, point3, signborderPaint);
-                signborderPaint.setColor(valueSignColor);
                 drawTriangleBoder(canvas, point1, point2, point3, signborderPaint);
-
-                //canvas.drawPoint(point1.x - value_sign_border_size/4, point1.y, signborderPaint);//画一个点  
-                // canvas.drawPoint(point2.x-value_sign_border_size/4, point2.y,signborderPaint);//画一个点  
             }
         }
 
@@ -715,18 +710,21 @@ public class SegmentedBarView extends View {
     /**
      * 将三角形的一条顶边用颜色给覆盖掉
      *
-     * @param canvas
-     * @param point1
-     * @param point2
-     * @param point3
-     * @param paint
      */
     private void drawTriangleBoder(Canvas canvas, Point point1, Point point2, Point point3, Paint paint) {
         triangleboderPath.reset();
-        triangleboderPath.moveTo(point1.x + value_sign_border_size, point1.y);
-        triangleboderPath.lineTo(point2.x - value_sign_border_size, point2.y);
-        triangleboderPath.close();
-
+        triangleboderPath.moveTo(point1.x, point1.y);
+        triangleboderPath.lineTo(point2.x, point2.y);
+        paint.setColor(fillPaint.getColor());
+        paint.setStrokeWidth(value_sign_border_size+1f);
+        canvas.drawPath(triangleboderPath, paint);
+        triangleboderPath.reset();
+        paint.setStrokeWidth(value_sign_border_size);
+        float value =value_sign_border_size/6;
+        triangleboderPath.moveTo(point1.x-value, point1.y-value);
+        triangleboderPath.lineTo(point3.x, point3.y);
+        triangleboderPath.lineTo(point2.x+value, point2.y-value);
+        paint.setColor(value_sign_border_color);
         canvas.drawPath(triangleboderPath, paint);
     }
 

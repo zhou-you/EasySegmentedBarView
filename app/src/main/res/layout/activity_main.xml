@@ -82,6 +82,9 @@
                 app:sbv_value_sign_height="30dp"
                 app:sbv_value_sign_round="8dp"
                 app:sbv_value_sign_width="100dp"
+                app:sbv_value_sign_border_size="1dp"
+                app:sbv_value_sign_border_color="#FF0000"
+                app:sbv_show_sign_boder="true"
                 />
 
             <com.zhouyou.view.segmentedbar.SegmentedBarView
