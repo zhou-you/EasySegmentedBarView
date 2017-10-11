@@ -35,7 +35,7 @@
 
 ## Demo下载
 
-[![downloads](https://img.shields.io/badge/downloads-460k-blue.svg)](https://github.com/zhouyou/EasySegmentedBarView/blob/master/segmentedbar_demo.apk?raw=true)
+[![downloads](https://img.shields.io/badge/downloads-460k-blue.svg)](https://github.com/zhouyou/EasySegmentedBarView/blob/master/apk/segmentedbar_demo.apk?raw=true)
 
 ## 用法介绍
 ### build.gradle设置
