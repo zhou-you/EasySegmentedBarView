@@ -77,14 +77,14 @@
                 app:sbv_segment_rule="average"
                 app:sbv_segment_text_size="15sp"
                 app:sbv_show_description_text="true"
+                app:sbv_show_sign_boder="true"
                 app:sbv_side_style="rounded"
                 app:sbv_side_text_style="twoSided"
+                app:sbv_value_sign_border_color="#FF0000"
+                app:sbv_value_sign_border_size="1dp"
                 app:sbv_value_sign_height="30dp"
                 app:sbv_value_sign_round="8dp"
                 app:sbv_value_sign_width="100dp"
-                app:sbv_value_sign_border_size="1dp"
-                app:sbv_value_sign_border_color="#FF0000"
-                app:sbv_show_sign_boder="true"
                 />
 
             <com.zhouyou.view.segmentedbar.SegmentedBarView
@@ -343,6 +343,7 @@
                 app:sbv_sliderImg="@mipmap/slider2"
                 app:sbv_sliderType="Slider"
                 />
+
             <com.zhouyou.view.segmentedbar.SegmentedBarView
                 android:id="@+id/slider_type_bar_view_oil"
                 android:layout_width="match_parent"
@@ -362,6 +363,7 @@
                 app:sbv_sliderImg="@mipmap/slider2"
                 app:sbv_sliderType="Slider"
                 />
+
             <com.zhouyou.view.segmentedbar.SegmentedBarView
                 android:id="@+id/slider_type_bar_view_oil2"
                 android:layout_width="match_parent"
@@ -381,6 +383,7 @@
                 app:sbv_sliderImg="@mipmap/slider2"
                 app:sbv_sliderType="Slider"
                 />
+
             <com.zhouyou.view.segmentedbar.SegmentedBarView
                 android:id="@+id/slider_type_bar_view_oil3"
                 android:layout_width="match_parent"
@@ -400,6 +403,7 @@
                 app:sbv_sliderImg="@mipmap/slider2"
                 app:sbv_sliderType="Slider"
                 />
+
             <com.zhouyou.view.segmentedbar.SegmentedBarView
                 android:id="@+id/slider_type_bar_view_oil4"
                 android:layout_width="match_parent"
@@ -419,6 +423,7 @@
                 app:sbv_sliderImg="@mipmap/slider2"
                 app:sbv_sliderType="Slider"
                 />
+
             <com.zhouyou.view.segmentedbar.SegmentedBarView
                 android:id="@+id/slider_type_bar_view_oil5"
                 android:layout_width="match_parent"
@@ -438,6 +443,28 @@
                 app:sbv_sliderImg="@mipmap/slider2"
                 app:sbv_sliderType="Slider"
                 />
+
+            <com.zhouyou.view.segmentedbar.SegmentedBarView
+                android:id="@+id/slider_type_bar_view_thumb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:sbv_bar_height="5dp"
+                app:sbv_descriptionAlign="Both"
+                app:sbv_descriptionTopAlign="Center"
+                app:sbv_description_text_color="@color/textcolor_99"
+                app:sbv_description_text_size="13sp"
+                app:sbv_segment_bg="false"
+                app:sbv_segment_gap_width="0dp"
+                app:sbv_show_description_text="true"
+                app:sbv_show_description_top_text="true"
+                app:sbv_show_segment_text="false"
+                app:sbv_side_style="rounded"
+                app:sbv_side_text_style="oneSided"
+                app:sbv_sliderImg="@mipmap/ic_weigh_slider"
+                app:sbv_sliderType="Slider"
+                app:sbv_segment_rule="scale"
+                />
         </LinearLayout>
+
     </ScrollView>
 </LinearLayout>

@@ -131,6 +131,10 @@ public class SegmentedBarView extends View {
     private int sideRule;                                          //设置分段规则
     private int value_sign_border_color;
 
+    private Bitmap mBitmap;
+    private int imgH, imgW;
+    private boolean isShowThumb;
+
     public SegmentedBarView(Context context) {
         super(context);
         init(context, null);
@@ -193,6 +197,15 @@ public class SegmentedBarView extends View {
             a.recycle();
         }
 
+        if (sliderImage != -1) {
+            isShowThumb = true;
+        }
+        if (isShowThumb) {
+            mBitmap = BitmapFactory.decodeResource(getResources(), sliderImage);
+            imgH = mBitmap.getWidth();
+            imgW = mBitmap.getHeight();
+        }
+
         formatter = new DecimalFormat("##.####");
 
         segmentTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
@@ -248,10 +261,15 @@ public class SegmentedBarView extends View {
         }
     }
 
+    private float mLeft, mRight, xLeft, xRight;
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         valueSignCenter = -1;
+        if (isShowThumb) {
+            xLeft = getPaddingLeft() + imgW / 2;
+        }
         if (isDrawSegmentBg) {//是否画背景 默认：不画
             drawBgSegment(canvas);
         }
@@ -278,13 +296,14 @@ public class SegmentedBarView extends View {
         }
     }
 
+    private int getThumRadius() {
+        return (sliderType == SLIDER && isShowThumb) ? imgW / 2 : 0;
+    }
+
     private void drawValueSlider(Canvas canvas) {
-        if (sliderImage == -1) throw new RuntimeException("no found sliderImg!!!!!");
-        Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), sliderImage);
-        int w = mBitmap.getWidth();
-        int h = mBitmap.getHeight();
-        int top = rectBounds.top + barRoundingRadius - h / 2;
-        canvas.drawBitmap(mBitmap, valueSignCenter - w / 2, top, fillPaint);
+        if (!isShowThumb) throw new RuntimeException("plase add sbv_sliderImg!!!!!");
+        int top = rectBounds.top + barRoundingRadius - imgH / 2;
+        canvas.drawBitmap(mBitmap, valueSignCenter - imgW / 2, top, fillPaint);
     }
 
     //显示空数据
@@ -352,7 +371,7 @@ public class SegmentedBarView extends View {
     private void drawBgSegment(Canvas canvas) {
         int segmentsSize = 1;
         float singleSegmentWidth = getContentWidth() / segmentsSize;
-        rectBounds.set(getPaddingLeft(), valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight(), (int)
+        rectBounds.set(getPaddingLeft() + getThumRadius(), valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight(), (int)
                 singleSegmentWidth + getPaddingLeft(), barHeight + valueSignSpaceHeight() + descriptionBoxTopHeight()
                 + getPaddingTop());
 
@@ -410,7 +429,7 @@ public class SegmentedBarView extends View {
     }
 
     private int getContentWidth() {
-        return getWidth() - getPaddingLeft() - getPaddingRight();
+        return getWidth() - getPaddingLeft() - getPaddingRight() - getThumRadius();
     }
 
     private int getContentHeight() {
@@ -427,6 +446,9 @@ public class SegmentedBarView extends View {
             singleSegmentWidth = getContentWidth() * spacing / valueMax;
             float temp = getContentWidth() / valueMax * segment.getMinValue();
             segmentLeft = temp;
+            if (isLeftSegment) {
+                segmentLeft += getThumRadius();
+            }
             if (!isLeftSegment) {
                 segmentLeft += gapWidth;
             }
@@ -442,6 +464,9 @@ public class SegmentedBarView extends View {
             singleSegmentWidth = (getContentWidth() + gapWidth) / segmentsSize - gapWidth;
             segmentLeft = (singleSegmentWidth + gapWidth) * segmentIndex;
             segmentRight = segmentLeft + singleSegmentWidth;
+            if (isLeftSegment) {
+                segmentLeft += getThumRadius();
+            }
             if (!isLeftSegment && isDrawSegmentBg) {
                 RectF mRectF = new RectF();
                 grapPaint.setColor(Color.WHITE);
@@ -709,21 +734,20 @@ public class SegmentedBarView extends View {
 
     /**
      * 将三角形的一条顶边用颜色给覆盖掉
-     *
      */
     private void drawTriangleBoder(Canvas canvas, Point point1, Point point2, Point point3, Paint paint) {
         triangleboderPath.reset();
         triangleboderPath.moveTo(point1.x, point1.y);
         triangleboderPath.lineTo(point2.x, point2.y);
         paint.setColor(fillPaint.getColor());
-        paint.setStrokeWidth(value_sign_border_size+1f);
+        paint.setStrokeWidth(value_sign_border_size + 1f);
         canvas.drawPath(triangleboderPath, paint);
         triangleboderPath.reset();
         paint.setStrokeWidth(value_sign_border_size);
-        float value =value_sign_border_size/6;
-        triangleboderPath.moveTo(point1.x-value, point1.y-value);
+        float value = value_sign_border_size / 6;
+        triangleboderPath.moveTo(point1.x - value, point1.y - value);
         triangleboderPath.lineTo(point3.x, point3.y);
-        triangleboderPath.lineTo(point2.x+value, point2.y-value);
+        triangleboderPath.lineTo(point2.x + value, point2.y - value);
         paint.setColor(value_sign_border_color);
         canvas.drawPath(triangleboderPath, paint);
     }
@@ -742,6 +766,9 @@ public class SegmentedBarView extends View {
         if (showDescriptionTopText) {
             minHeight += descriptionBoxTopHeight;
         }
+       /* if(isShowThumb){
+            minWidth+=imgW;
+        }*/
         int w = resolveSizeAndState(minWidth, widthMeasureSpec, 0);
         int h = resolveSizeAndState(minHeight, heightMeasureSpec, 0);
 
@@ -781,8 +808,8 @@ public class SegmentedBarView extends View {
      * @param isRightSegment
      */
     private void drawTextLeftRightInRectBothSides(Canvas canvas, Paint paint, String text, float left, float top,
-                                                 float right, float bottom, boolean isLeftSegment, boolean
-                                                         isRightSegment, int index) {
+                                                  float right, float bottom, boolean isLeftSegment, boolean
+                                                          isRightSegment, int index) {
         paint.setTextAlign(Paint.Align.CENTER);
         float textHeight = paint.descent() - paint.ascent();
         float textOffset = (textHeight / 2) - paint.descent();
@@ -812,13 +839,13 @@ public class SegmentedBarView extends View {
         } else {
             canvas.drawText(text, right - textWidth / 2, (top + bottom) / 2 + textOffset, paint);
         }*/
-        if (!isLeftSegment&&!isRightSegment) {//如果不是在两端  对2求余
+        if (!isLeftSegment && !isRightSegment) {//如果不是在两端  对2求余
             if (text.contains("&")) {//必须是&分割
                 String[] texts = TextUtils.split(text, "&");
-                if (index % 2 == 1){
+                if (index % 2 == 1) {
                     canvas.drawText(texts[0], left, (top + bottom) / 2 + textOffset, paint);
                     canvas.drawText(texts[1], right, (top + bottom) / 2 + textOffset, paint);
-                }else{
+                } else {
                     canvas.drawText(texts[1], right, (top + bottom) / 2 + textOffset, paint);
                 }
             }

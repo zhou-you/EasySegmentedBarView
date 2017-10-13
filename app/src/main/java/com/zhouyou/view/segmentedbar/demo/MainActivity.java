@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2017 zhouyou(478319399@qq.com)
  *
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         createBarViewWithOilSliderType3();
         createBarViewWithOilSliderType4();
         createBarViewWithOilSliderType5();
+        createBarViewWithOilSliderType6();
     }
 
     //通过xml配置BarView
@@ -85,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
         segments.add(segment2);
         Segment segment3 = new Segment(10.5f, 20f, "High", Color.parseColor("#EF3D2F"));
         segments.add(segment3);
-        barView.setValueWithUnit(13.96f, "10<sup>12</sup>/l");
+        //barView.setValueWithUnit(13.96f, "10<sup>12</sup>/l");
+        barView.setValueWithUnit(20.0f, "10<sup>12</sup>/l");
         barView.setSegments(segments);
         barView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         barView.setPadding(0, getResources().getDimensionPixelSize(R.dimen.vertical_padding), 0, 0);
@@ -478,6 +481,20 @@ public class MainActivity extends AppCompatActivity {
         segments.add(segment2);
         barView.setShowDescriptionText(true);
         barView.setValue(60.0f);
+        barView.setSegments(segments);
+    }
+    //设置滑块类型
+    private void createBarViewWithOilSliderType6() {
+        final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb);
+        int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a")};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment(0.0f, 40.0f, "", colors[0]).setDescriptionText("00").setTopDescriptionText("缺油");
+        segments.add(segment1);
+        //中间显示用40%&60%  “&” 分割
+        Segment segment2 = new Segment(40.0f, 100.0f, "", colors[1]).setDescriptionText("40%&100%").setTopDescriptionText("正常");
+        segments.add(segment2);
+        barView.setShowDescriptionText(true);
+        barView.setValue(0.0f);
         barView.setSegments(segments);
     }
 
