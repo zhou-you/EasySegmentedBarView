@@ -31,7 +31,7 @@
 ![](http://img.blog.csdn.net/20170901150411893) ![](http://img.blog.csdn.net/20170901150421896) ![](http://img.blog.csdn.net/20170901150433725)
 
 ## 版本说明
-[![release](https://img.shields.io/badge/release-v1.0.1-orange.svg)](https://github.com/zhou-you/EasySegmentedBarView/blob/master/update.md)
+[![release](https://img.shields.io/badge/release-v1.0.3-orange.svg)](https://github.com/zhou-you/EasySegmentedBarView/blob/master/update.md)
 
 ## Demo下载
 
@@ -42,7 +42,7 @@
 
 ```
 dependencies {
- compile 'com.zhouyou:segmentedbar:1.0.1'
+ compile 'com.zhouyou:segmentedbar:1.0.3'
 }
 
 ```
