@@ -20,6 +20,7 @@ package com.zhouyou.view.segmentedbar.demo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.zhouyou.view.segmentedbar.Segment;
@@ -486,16 +487,26 @@ public class MainActivity extends AppCompatActivity {
     //设置滑块类型
     private void createBarViewWithOilSliderType6() {
         final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb);
-        int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a")};
+        int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a"),Color.parseColor("#72ab2a")};
         ArrayList<Segment> segments = new ArrayList<>();
-        Segment segment1 = new Segment(0.0f, 40.0f, "", colors[0]).setDescriptionText("00").setTopDescriptionText("缺油");
+        Segment segment1 = new Segment(0.0f, 15.0f, "", colors[0]).setDescriptionText("00").setTopDescriptionText("缺油");
         segments.add(segment1);
         //中间显示用40%&60%  “&” 分割
-        Segment segment2 = new Segment(40.0f, 100.0f, "", colors[1]).setDescriptionText("40%&100%").setTopDescriptionText("正常");
+        Segment segment2 = new Segment(15.0f, 45.0f, "", colors[1]).setDescriptionText("15.0%&45.0%").setTopDescriptionText("正常");
         segments.add(segment2);
+        Segment segment3 = new Segment(45.0f, 100.0f, "", colors[2]).setDescriptionText("100%").setTopDescriptionText("严重");
+        segments.add(segment3);
         barView.setShowDescriptionText(true);
-        barView.setValue(0.0f);
+        barView.setValue(14.5f);
         barView.setSegments(segments);
+
+        barView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent = new Intent(MainActivity.this, TestActivity.class);
+                //startActivity(intent);
+            }
+        });
     }
 
 }
