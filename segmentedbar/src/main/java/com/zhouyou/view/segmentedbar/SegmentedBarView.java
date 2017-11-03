@@ -429,7 +429,7 @@ public class SegmentedBarView extends View {
     }
 
     private int getContentWidth() {
-        return getWidth() - getPaddingLeft() - getPaddingRight() - getThumRadius();
+        return getWidth() - getPaddingLeft() - getPaddingRight() - getThumRadius()*2;
     }
 
     private int getContentHeight() {
@@ -446,9 +446,6 @@ public class SegmentedBarView extends View {
             singleSegmentWidth = getContentWidth() * spacing / valueMax;
             float temp = getContentWidth() / valueMax * segment.getMinValue();
             segmentLeft = temp;
-            if (isLeftSegment) {
-                segmentLeft += getThumRadius();
-            }
             if (!isLeftSegment) {
                 segmentLeft += gapWidth;
             }
@@ -476,23 +473,19 @@ public class SegmentedBarView extends View {
             }
         }
         // Segment bounds
-        rectBounds.set((int) segmentLeft + getPaddingLeft(), valueSignSpaceHeight() + descriptionBoxTopHeight() +
-                getPaddingTop(), (int) segmentRight + getPaddingLeft(), barHeight + valueSignSpaceHeight() +
+        rectBounds.set((int) segmentLeft + getPaddingLeft()+getThumRadius(), valueSignSpaceHeight() + descriptionBoxTopHeight() +
+                getPaddingTop(), (int) segmentRight + getPaddingRight()+getThumRadius(), barHeight + valueSignSpaceHeight() +
                 descriptionBoxTopHeight() + getPaddingTop());
         // Calculating value sign position
         if (valueSegment != null && valueSegment == segmentIndex) {
-            valueSignCenter = segmentLeft + getPaddingLeft() + (singleSegmentWidth / 2);
-        } else if (value != null && (value >= segment.getMinValue() && value < segment.getMaxValue() ||
-                (isRightSegment && segment.getMaxValue() == value))) {
-            float valueSignCenterPercent = (value - segment.getMinValue()) / (segment.getMaxValue() - segment
-                    .getMinValue());
-            valueSignCenter = (int) (segmentLeft + getPaddingLeft() + valueSignCenterPercent * singleSegmentWidth);
+            valueSignCenter = segmentLeft + getPaddingLeft() + (singleSegmentWidth / 2)+getThumRadius();
+        } else if (value != null && (value >= segment.getMinValue() && value < segment.getMaxValue() || (isRightSegment && segment.getMaxValue() == value))) {
+            float valueSignCenterPercent = (value - segment.getMinValue()) / (segment.getMaxValue() - segment.getMinValue());
+            valueSignCenter = (int) (segmentLeft + getPaddingLeft()+getThumRadius() + valueSignCenterPercent * singleSegmentWidth);
         }
 
         fillPaint.setColor(segment.getColor());
-
         segmentRect.set(rectBounds);
-
         // Drawing segment (with specific bounds if left or right)
         if (isLeftSegment || isRightSegment) {
             barRoundingRadius = rectBounds.height() / 2;
@@ -506,16 +499,16 @@ public class SegmentedBarView extends View {
                     canvas.drawRoundRect(roundRectangleBounds, barRoundingRadius, barRoundingRadius, fillPaint);
                     if (!isLeftAndRight) {
                         if (isLeftSegment) {
-                            rectBounds.set((int) segmentLeft + barRoundingRadius + getPaddingLeft(),
+                            rectBounds.set((int) segmentLeft + barRoundingRadius + getPaddingLeft()+getThumRadius(),
                                     valueSignSpaceHeight() + descriptionBoxTopHeight() + getPaddingTop(), (int)
-                                            segmentRight + getPaddingLeft(), barHeight + valueSignSpaceHeight() +
+                                            segmentRight + getPaddingRight()+getThumRadius(), barHeight + valueSignSpaceHeight() +
                                             descriptionBoxTopHeight() + getPaddingTop());
                             canvas.drawRect(rectBounds, fillPaint
                             );
                         } else {
-                            rectBounds.set((int) segmentLeft + getPaddingLeft(), valueSignSpaceHeight() +
+                            rectBounds.set((int) segmentLeft + getPaddingLeft()+getThumRadius(), valueSignSpaceHeight() +
                                     descriptionBoxTopHeight() + getPaddingTop(), (int) segmentRight -
-                                    barRoundingRadius + getPaddingLeft(), barHeight + valueSignSpaceHeight() +
+                                    barRoundingRadius + getPaddingRight()+getThumRadius(), barHeight + valueSignSpaceHeight() +
                                     descriptionBoxTopHeight() + getPaddingTop());
                             canvas.drawRect(
                                     rectBounds,
@@ -526,9 +519,9 @@ public class SegmentedBarView extends View {
                     break;
                 case SegmentedBarViewSideStyle.ANGLE:
                     if (isLeftAndRight) {
-                        rectBounds.set((int) segmentLeft + barRoundingRadius + getPaddingLeft(), valueSignSpaceHeight
+                        rectBounds.set((int) segmentLeft + barRoundingRadius + getPaddingLeft()+getThumRadius(), valueSignSpaceHeight
                                 () + descriptionBoxTopHeight() + getPaddingTop(), (int) segmentRight -
-                                barRoundingRadius + getPaddingLeft(), barHeight + valueSignSpaceHeight() +
+                                barRoundingRadius + getPaddingLeft()+getThumRadius(), barHeight + valueSignSpaceHeight() +
                                 getPaddingTop() + descriptionBoxTopHeight());
                         canvas.drawRect(
                                 rectBounds,
@@ -549,9 +542,9 @@ public class SegmentedBarView extends View {
                         drawTriangle(canvas, point1, point2, point3, fillPaint);
                     } else {
                         if (isLeftSegment) {
-                            rectBounds.set((int) segmentLeft + barRoundingRadius + getPaddingLeft(),
+                            rectBounds.set((int) segmentLeft + barRoundingRadius + getPaddingLeft()+getThumRadius(),
                                     valueSignSpaceHeight() + descriptionBoxTopHeight() + getPaddingTop(), (int)
-                                            segmentRight + getPaddingLeft(), barHeight + valueSignSpaceHeight() +
+                                            segmentRight + getPaddingLeft()+getThumRadius(), barHeight + valueSignSpaceHeight() +
                                             descriptionBoxTopHeight() + getPaddingTop());
                             canvas.drawRect(
                                     rectBounds,
@@ -564,9 +557,9 @@ public class SegmentedBarView extends View {
 
                             drawTriangle(canvas, point1, point2, point3, fillPaint);
                         } else {
-                            rectBounds.set((int) segmentLeft + getPaddingLeft(), valueSignSpaceHeight() +
+                            rectBounds.set((int) segmentLeft + getPaddingLeft()+getThumRadius(), valueSignSpaceHeight() +
                                     descriptionBoxTopHeight() + getPaddingTop(), (int) segmentRight -
-                                    barRoundingRadius + getPaddingLeft(), barHeight + valueSignSpaceHeight() +
+                                    barRoundingRadius + getPaddingLeft()+getThumRadius(), barHeight + valueSignSpaceHeight() +
                                     descriptionBoxTopHeight() + getPaddingTop());
                             canvas.drawRect(
                                     rectBounds,
