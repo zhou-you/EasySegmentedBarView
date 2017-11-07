@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.zhouyou.view.segmentedbar.demo.TestActivity">
-    <com.zhouyou.view.segmentedbar.SegmentedBarView
+    <!--<com.zhouyou.view.segmentedbar.SegmentedBarView
         android:id="@+id/slider_type_bar_view_thumb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,5 +26,25 @@
         app:sbv_sliderImg="@mipmap/ic_weigh_slider"
         app:sbv_sliderType="Slider"
         app:sbv_segment_rule="scale"
+        />-->
+    <com.zhouyou.view.segmentedbar.SegmentedBarView
+        android:id="@+id/slider_type_bar_view_thumb2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sbv_bar_height="5dp"
+        app:sbv_descriptionAlign="Both"
+        app:sbv_descriptionTopAlign="Center"
+        app:sbv_description_text_color="@color/textcolor_99"
+        app:sbv_description_text_size="13sp"
+        app:sbv_segment_bg="false"
+        app:sbv_segment_gap_width="0dp"
+        app:sbv_show_description_text="true"
+        app:sbv_show_description_top_text="true"
+        app:sbv_show_segment_text="false"
+        app:sbv_side_style="rounded"
+        app:sbv_side_text_style="oneSided"
+        app:sbv_sliderImg="@mipmap/ic_weigh_slider"
+        app:sbv_sliderType="Slider"
+        app:sbv_segment_rule="average"
         />
 </LinearLayout>

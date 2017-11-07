@@ -31,11 +31,12 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        createBarViewWithOilSliderType();
+        //createBarViewWithOilSliderType();
+        createBarViewWithOilSliderType2();
     }
 
     //设置滑块类型
-    private void createBarViewWithOilSliderType() {
+   /* private void createBarViewWithOilSliderType() {
         final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb);
         int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a"),Color.parseColor("#72ab2a")};
         ArrayList<Segment> segments = new ArrayList<>();
@@ -47,7 +48,23 @@ public class TestActivity extends AppCompatActivity {
         Segment segment3 = new Segment(45.0f, 100.0f, "", colors[2]).setDescriptionText("100%").setTopDescriptionText("严重");
         segments.add(segment3);
         barView.setShowDescriptionText(true);
-        barView.setValue(44.6f);
+        barView.setValue(14.6f);
+        barView.setSegments(segments);
+    }*/
+    //设置滑块类型
+    private void createBarViewWithOilSliderType2() {
+        final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb2);
+        int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a"),Color.parseColor("#72ab2a")};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment(0.0f, 1.62f, "", colors[0]).setDescriptionText("").setTopDescriptionText("偏低");
+        segments.add(segment1);
+        //中间显示用40%&60%  “&” 分割
+        Segment segment2 = new Segment(1.62f, 1.98f, "", colors[1]).setDescriptionText("1.62&1.98").setTopDescriptionText("达标");
+        segments.add(segment2);
+        Segment segment3 = new Segment(1.98f, 9.0f, "", colors[2]).setDescriptionText("").setTopDescriptionText("优");
+        segments.add(segment3);
+        barView.setShowDescriptionText(true);
+        barView.setValue(1.6f);
         barView.setSegments(segments);
     }
 }

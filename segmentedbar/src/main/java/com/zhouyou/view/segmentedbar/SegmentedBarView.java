@@ -461,9 +461,6 @@ public class SegmentedBarView extends View {
             singleSegmentWidth = (getContentWidth() + gapWidth) / segmentsSize - gapWidth;
             segmentLeft = (singleSegmentWidth + gapWidth) * segmentIndex;
             segmentRight = segmentLeft + singleSegmentWidth;
-            if (isLeftSegment) {
-                segmentLeft += getThumRadius();
-            }
             if (!isLeftSegment && isDrawSegmentBg) {
                 RectF mRectF = new RectF();
                 grapPaint.setColor(Color.WHITE);
