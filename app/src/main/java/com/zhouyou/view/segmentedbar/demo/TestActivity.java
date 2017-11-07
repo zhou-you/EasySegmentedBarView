@@ -31,12 +31,12 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        //createBarViewWithOilSliderType();
+        createBarViewWithOilSliderType();
         createBarViewWithOilSliderType2();
     }
 
     //设置滑块类型
-   /* private void createBarViewWithOilSliderType() {
+    private void createBarViewWithOilSliderType() {
         final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb);
         int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a"),Color.parseColor("#72ab2a")};
         ArrayList<Segment> segments = new ArrayList<>();
@@ -50,7 +50,7 @@ public class TestActivity extends AppCompatActivity {
         barView.setShowDescriptionText(true);
         barView.setValue(14.6f);
         barView.setSegments(segments);
-    }*/
+    }
     //设置滑块类型
     private void createBarViewWithOilSliderType2() {
         final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb2);

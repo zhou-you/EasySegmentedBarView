@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.zhouyou.view.segmentedbar.demo.TestActivity">
-    <!--<com.zhouyou.view.segmentedbar.SegmentedBarView
+    <com.zhouyou.view.segmentedbar.SegmentedBarView
         android:id="@+id/slider_type_bar_view_thumb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         app:sbv_sliderImg="@mipmap/ic_weigh_slider"
         app:sbv_sliderType="Slider"
         app:sbv_segment_rule="scale"
-        />-->
+        />
     <com.zhouyou.view.segmentedbar.SegmentedBarView
         android:id="@+id/slider_type_bar_view_thumb2"
         android:layout_width="match_parent"
