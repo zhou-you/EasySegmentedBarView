@@ -27,11 +27,12 @@
 #### 欢迎加入QQ交流群:581235049
 ![](http://img.blog.csdn.net/20170601165330238)
 ## 演示（请star支持）
+![](https://github.com/zhou-you/EasySegmentedBarView/raw/master/screenshot/1.gif) ![](https://github.com/zhou-you/EasySegmentedBarView/raw/master/screenshot/2.gif)
 ![](http://img.blog.csdn.net/20170901150322496) ![](http://img.blog.csdn.net/20170901150342851) ![](http://img.blog.csdn.net/20170901150354651)
 ![](http://img.blog.csdn.net/20170901150411893) ![](http://img.blog.csdn.net/20170901150421896) ![](http://img.blog.csdn.net/20170901150433725)
 
 ## 版本说明
-[![release](https://img.shields.io/badge/release-v1.0.5-orange.svg)](https://github.com/zhou-you/EasySegmentedBarView/blob/master/update.md)
+[![release](https://img.shields.io/badge/release-v1.0.6-orange.svg)](https://github.com/zhou-you/EasySegmentedBarView/blob/master/update.md)
 
 ## Demo下载
 
@@ -42,7 +43,7 @@
 
 ```
 dependencies {
- compile 'com.zhouyou:segmentedbar:1.0.5'
+ compile 'com.zhouyou:segmentedbar:1.0.6'
 }
 
 ```
@@ -199,6 +200,9 @@ dependencies {
 
 ### Other
 其它更多设置和使用方法，请参考Demo
+
+## 感谢
+在此感谢[SegmentedBarView-Android](https://github.com/gspd-mobi/SegmentedBarView-Android)作者提供的开源库，对于本库的完成提供了很大的帮助。
 
 ## 支持开源
 
