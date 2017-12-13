@@ -487,6 +487,13 @@
                 app:sbv_description_box_height="35dp"
                 app:sbv_description_highlight_text_color="#461d18"
                 />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="onMore"
+                android:text="更多"/>
         </LinearLayout>
 
     </ScrollView>

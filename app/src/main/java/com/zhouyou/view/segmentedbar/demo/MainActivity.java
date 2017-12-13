@@ -501,14 +501,6 @@ public class MainActivity extends AppCompatActivity {
         barView.setShowDescriptionText(true);
         barView.setValue(14.5f);
         barView.setSegments(segments);
-
-        barView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TestActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     //设置滑块类型 --非数字分段
@@ -532,6 +524,11 @@ public class MainActivity extends AppCompatActivity {
         barView.setShowDescriptionText(true);
         barView.setValueSegment(4);
         barView.setSegments(segments);
+    }
+    
+    public void onMore(View view){
+        Intent intent = new Intent(MainActivity.this, TestActivity.class);
+        startActivity(intent);
     }
 
 }
