@@ -33,16 +33,16 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        createBarViewWithOilSliderType();
-        createBarViewWithOilSliderType2();
-        createBarViewWithOilSliderType3();
-        createBarViewWithOilSliderType4();
-        createBarViewWithOilSliderType5();
-        createBarViewWithOilSliderType6();
+        createBarViewTest();
+        createBarViewTest2();
+        createBarViewTest3();
+        createBarViewTest4();
+        createBarViewTest5();
+        createBarViewTest6();
     }
 
     //设置滑块类型
-    private void createBarViewWithOilSliderType() {
+    private void createBarViewTest() {
         barView1 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb);
         int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a"),Color.parseColor("#72ab2a")};
         ArrayList<Segment> segments = new ArrayList<>();
@@ -59,7 +59,7 @@ public class TestActivity extends AppCompatActivity {
     }
     
     //设置滑块类型
-    private void createBarViewWithOilSliderType2() {
+    private void createBarViewTest2() {
         barView2 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb2);
         int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a"),Color.parseColor("#72ab2a")};
         ArrayList<Segment> segments = new ArrayList<>();
@@ -76,7 +76,7 @@ public class TestActivity extends AppCompatActivity {
     }
 
     //设置滑块类型 --非数字分段
-    private void createBarViewWithOilSliderType3() {
+    private void createBarViewTest3() {
         barView3 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb3);
         int colors[] = new int[]{Color.parseColor("#fae8d7"), Color.parseColor("#f3d0c0"),Color.parseColor("#deb1a0")
                 ,Color.parseColor("#cda485"),Color.parseColor("#bc9375"),Color.parseColor("#8a6145")};
@@ -100,7 +100,7 @@ public class TestActivity extends AppCompatActivity {
     
     
     //设置滑块类型 --非数字分段
-    private void createBarViewWithOilSliderType4() {
+    private void createBarViewTest4() {
         barView4 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb4);
         int colors[] = new int[]{Color.parseColor("#fae8d7"), Color.parseColor("#f3d0c0"),Color.parseColor("#deb1a0")
                 ,Color.parseColor("#cda485"),Color.parseColor("#bc9375"),Color.parseColor("#8a6145")};
@@ -123,7 +123,7 @@ public class TestActivity extends AppCompatActivity {
     }
     
     //设置滑块类型 --非数字分段
-    private void createBarViewWithOilSliderType5() {
+    private void createBarViewTest5() {
         barView5 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb5);
         int colors[] = new int[]{Color.parseColor("#fae8d7"), Color.parseColor("#f3d0c0"),Color.parseColor("#deb1a0")
                 ,Color.parseColor("#cda485"),Color.parseColor("#bc9375"),Color.parseColor("#8a6145")};
@@ -145,7 +145,7 @@ public class TestActivity extends AppCompatActivity {
         barView5.setSegments(segments);
     }
     //设置滑块类型 --数字分段
-    private void createBarViewWithOilSliderType6() {
+    private void createBarViewTest6() {
         barView6 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb6);
         int colors[] = new int[]{Color.parseColor("#fae8d7"), Color.parseColor("#f3d0c0"),Color.parseColor("#deb1a0")
                 ,Color.parseColor("#cda485"),Color.parseColor("#bc9375"),Color.parseColor("#8a6145")};
