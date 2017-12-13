@@ -7,10 +7,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.zhouyou.view.segmentedbar.demo.TestActivity">
+
     <com.zhouyou.view.segmentedbar.SegmentedBarView
         android:id="@+id/slider_type_bar_view_thumb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/black_54"
+        android:layout_marginTop="10dp"
         app:sbv_bar_height="5dp"
         app:sbv_descriptionAlign="Both"
         app:sbv_descriptionTopAlign="Center"
@@ -18,6 +21,7 @@
         app:sbv_description_text_size="13sp"
         app:sbv_segment_bg="false"
         app:sbv_segment_gap_width="0dp"
+        app:sbv_segment_rule="scale"
         app:sbv_show_description_text="true"
         app:sbv_show_description_top_text="true"
         app:sbv_show_segment_text="false"
@@ -25,12 +29,14 @@
         app:sbv_side_text_style="oneSided"
         app:sbv_sliderImg="@mipmap/ic_weigh_slider"
         app:sbv_sliderType="Slider"
-        app:sbv_segment_rule="scale"
         />
+
     <com.zhouyou.view.segmentedbar.SegmentedBarView
         android:id="@+id/slider_type_bar_view_thumb2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/black_54"
         app:sbv_bar_height="5dp"
         app:sbv_descriptionAlign="Both"
         app:sbv_descriptionTopAlign="Center"
@@ -38,6 +44,7 @@
         app:sbv_description_text_size="13sp"
         app:sbv_segment_bg="false"
         app:sbv_segment_gap_width="0dp"
+        app:sbv_segment_rule="average"
         app:sbv_show_description_text="true"
         app:sbv_show_description_top_text="true"
         app:sbv_show_segment_text="false"
@@ -45,6 +52,77 @@
         app:sbv_side_text_style="oneSided"
         app:sbv_sliderImg="@mipmap/ic_weigh_slider"
         app:sbv_sliderType="Slider"
-        app:sbv_segment_rule="average"
         />
+
+    <com.zhouyou.view.segmentedbar.SegmentedBarView
+        android:id="@+id/slider_type_bar_view_thumb3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:sbv_bar_height="15dp"
+        app:sbv_description_box_height="30dp"
+        app:sbv_description_box_top_height="30dp"
+        app:sbv_description_highlight_text_color="#461d18"
+        app:sbv_description_text_color="#c5bfbf"
+        app:sbv_description_text_size="14sp"
+        app:sbv_segment_bg="false"
+        app:sbv_segment_gap_width="0dp"
+        app:sbv_segment_rule="average"
+        app:sbv_show_description_text="true"
+        app:sbv_show_description_top_text="true"
+        app:sbv_show_segment_text="false"
+        app:sbv_side_style="normal"
+        app:sbv_sliderType="Custom"
+        app:sbv_thumb_h="30dp"
+        app:sbv_thumb_w="30dp"
+        />
+
+    <com.zhouyou.view.segmentedbar.demo.view.CircleThumbSegmentedBarView
+        android:id="@+id/slider_type_bar_view_thumb4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:sbv_bar_height="15dp"
+        app:sbv_description_box_height="35dp"
+        app:sbv_description_highlight_text_color="#461d18"
+        app:sbv_description_text_color="#c5bfbf"
+        app:sbv_description_text_size="14sp"
+        app:sbv_segment_bg="false"
+        app:sbv_segment_gap_width="0dp"
+        app:sbv_segment_rule="average"
+        app:sbv_show_description_text="true"
+        app:sbv_show_segment_text="false"
+        app:sbv_side_style="normal"
+        app:sbv_sliderType="Custom"
+        app:sbv_thumb_h="32dp"
+        app:sbv_thumb_w="32dp"
+        />
+
+    <com.zhouyou.view.segmentedbar.demo.view.RectThumbSegmentedBarView
+        android:id="@+id/slider_type_bar_view_thumb5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:sbv_bar_height="15dp"
+        app:sbv_description_box_height="35dp"
+        app:sbv_description_highlight_text_color="#461d18"
+        app:sbv_description_text_color="#c5bfbf"
+        app:sbv_description_text_size="14sp"
+        app:sbv_segment_bg="false"
+        app:sbv_segment_gap_width="0dp"
+        app:sbv_segment_rule="average"
+        app:sbv_show_description_text="true"
+        app:sbv_show_segment_text="false"
+        app:sbv_side_style="normal"
+        app:sbv_sliderType="Custom"
+        app:sbv_thumb_h="30dp"
+        app:sbv_thumb_w="34dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="onProgress"
+        android:text="更新位置"/>
 </LinearLayout>

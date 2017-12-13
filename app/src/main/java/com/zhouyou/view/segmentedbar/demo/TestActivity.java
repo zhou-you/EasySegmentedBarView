@@ -19,25 +19,30 @@ package com.zhouyou.view.segmentedbar.demo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.zhouyou.view.segmentedbar.Segment;
 import com.zhouyou.view.segmentedbar.SegmentedBarView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class TestActivity extends AppCompatActivity {
-
+    private SegmentedBarView barView1,barView2,barView3,barView4,barView5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         createBarViewWithOilSliderType();
         createBarViewWithOilSliderType2();
+        createBarViewWithOilSliderType3();
+        createBarViewWithOilSliderType4();
+        createBarViewWithOilSliderType5();
     }
 
     //设置滑块类型
     private void createBarViewWithOilSliderType() {
-        final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb);
+        barView1 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb);
         int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a"),Color.parseColor("#72ab2a")};
         ArrayList<Segment> segments = new ArrayList<>();
         Segment segment1 = new Segment(0.0f, 15.0f, "", colors[0]).setDescriptionText("00").setTopDescriptionText("缺油");
@@ -47,13 +52,14 @@ public class TestActivity extends AppCompatActivity {
         segments.add(segment2);
         Segment segment3 = new Segment(45.0f, 100.0f, "", colors[2]).setDescriptionText("100%").setTopDescriptionText("严重");
         segments.add(segment3);
-        barView.setShowDescriptionText(true);
-        barView.setValue(14.6f);
-        barView.setSegments(segments);
+        barView1.setShowDescriptionText(true);
+        barView1.setValue(14.6f);
+        barView1.setSegments(segments);
     }
+    
     //设置滑块类型
     private void createBarViewWithOilSliderType2() {
-        final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb2);
+        barView2 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb2);
         int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a"),Color.parseColor("#72ab2a")};
         ArrayList<Segment> segments = new ArrayList<>();
         Segment segment1 = new Segment(0.0f, 1.62f, "", colors[0]).setDescriptionText("").setTopDescriptionText("偏低");
@@ -63,8 +69,95 @@ public class TestActivity extends AppCompatActivity {
         segments.add(segment2);
         Segment segment3 = new Segment(1.98f, 9.0f, "", colors[2]).setDescriptionText("").setTopDescriptionText("优");
         segments.add(segment3);
-        barView.setShowDescriptionText(true);
-        barView.setValue(1.6f);
-        barView.setSegments(segments);
+        barView2.setShowDescriptionText(true);
+        barView2.setValue(1.6f);
+        barView2.setSegments(segments);
+    }
+
+    //设置滑块类型 --非数字分段
+    private void createBarViewWithOilSliderType3() {
+        barView3 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb3);
+        int colors[] = new int[]{Color.parseColor("#fae8d7"), Color.parseColor("#f3d0c0"),Color.parseColor("#deb1a0")
+                ,Color.parseColor("#cda485"),Color.parseColor("#bc9375"),Color.parseColor("#8a6145")};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment("", "亮白", colors[0]).setTopDescriptionText("测试1");
+        segments.add(segment1);
+        Segment segment2 = new Segment("", "红润", colors[1]).setTopDescriptionText("测试2");
+        segments.add(segment2);
+        Segment segment3 = new Segment("", "自然", colors[2]).setTopDescriptionText("测试3");
+        segments.add(segment3);
+        Segment segment4 = new Segment("", "小麦", colors[3]).setTopDescriptionText("测试4");
+        segments.add(segment4);
+        Segment segment5 = new Segment("", "暗哑", colors[4]).setTopDescriptionText("测试5");
+        segments.add(segment5);
+        Segment segment6 = new Segment("", "黝黑", colors[5]).setTopDescriptionText("测试6");
+        segments.add(segment6);
+        barView3.setShowDescriptionText(true);
+        barView3.setValueSegment(3);
+        barView3.setSegments(segments);
+    }
+    
+    
+    //设置滑块类型 --非数字分段
+    private void createBarViewWithOilSliderType4() {
+        barView4 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb4);
+        int colors[] = new int[]{Color.parseColor("#fae8d7"), Color.parseColor("#f3d0c0"),Color.parseColor("#deb1a0")
+                ,Color.parseColor("#cda485"),Color.parseColor("#bc9375"),Color.parseColor("#8a6145")};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment("", "亮白", colors[0]);
+        segments.add(segment1);
+        Segment segment2 = new Segment("", "红润", colors[1]);
+        segments.add(segment2);
+        Segment segment3 = new Segment("", "自然", colors[2]);
+        segments.add(segment3);
+        Segment segment4 = new Segment("", "小麦", colors[3]);
+        segments.add(segment4);
+        Segment segment5 = new Segment("", "暗哑", colors[4]);
+        segments.add(segment5);
+        Segment segment6 = new Segment("", "黝黑", colors[5]);
+        segments.add(segment6);
+        barView4.setShowDescriptionText(true);
+        barView4.setValueSegment(4);
+        barView4.setSegments(segments);
+    }
+    
+    //设置滑块类型 --非数字分段
+    private void createBarViewWithOilSliderType5() {
+        barView5 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb5);
+        int colors[] = new int[]{Color.parseColor("#fae8d7"), Color.parseColor("#f3d0c0"),Color.parseColor("#deb1a0")
+                ,Color.parseColor("#cda485"),Color.parseColor("#bc9375"),Color.parseColor("#8a6145")};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment("", "亮白", colors[0]);
+        segments.add(segment1);
+        Segment segment2 = new Segment("", "红润", colors[1]);
+        segments.add(segment2);
+        Segment segment3 = new Segment("", "自然", colors[2]);
+        segments.add(segment3);
+        Segment segment4 = new Segment("", "小麦", colors[3]);
+        segments.add(segment4);
+        Segment segment5 = new Segment("", "暗哑", colors[4]);
+        segments.add(segment5);
+        Segment segment6 = new Segment("", "黝黑", colors[5]);
+        segments.add(segment6);
+        barView5.setShowDescriptionText(true);
+        barView5.setValueSegment(2);
+        barView5.setSegments(segments);
+    }
+    
+    public void onProgress(View view){
+        barView1.setValue(Float.valueOf(new Random().nextInt(90)));
+        barView2.setValue(Float.valueOf(new Random().nextInt(9)));
+        progress(barView3);
+        progress(barView4);
+        progress(barView5);
+    }
+    
+    private void progress(SegmentedBarView barView){
+        int value = barView.getValueSegment().intValue();
+        value++;
+        if(value>=6){
+            value=0;
+        }
+        barView.setValueSegment(value);
     }
 }

@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         createBarViewWithOilSliderType4();
         createBarViewWithOilSliderType5();
         createBarViewWithOilSliderType6();
+        createBarthumb4();
     }
 
     //通过xml配置BarView
@@ -508,6 +509,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    //设置滑块类型 --非数字分段
+    private void createBarthumb4() {
+        final SegmentedBarView barView = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb4);
+        int colors[] = new int[]{Color.parseColor("#fae8d7"), Color.parseColor("#f3d0c0"),Color.parseColor("#deb1a0")
+                ,Color.parseColor("#cda485"),Color.parseColor("#bc9375"),Color.parseColor("#8a6145")};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment("", "亮白", colors[0]);
+        segments.add(segment1);
+        Segment segment2 = new Segment("", "红润", colors[1]);
+        segments.add(segment2);
+        Segment segment3 = new Segment("", "自然", colors[2]);
+        segments.add(segment3);
+        Segment segment4 = new Segment("", "小麦", colors[3]);
+        segments.add(segment4);
+        Segment segment5 = new Segment("", "暗哑", colors[4]);
+        segments.add(segment5);
+        Segment segment6 = new Segment("", "黝黑", colors[5]);
+        segments.add(segment6);
+        barView.setShowDescriptionText(true);
+        barView.setValueSegment(4);
+        barView.setSegments(segments);
     }
 
 }

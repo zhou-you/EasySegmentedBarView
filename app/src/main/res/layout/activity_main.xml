@@ -436,7 +436,7 @@
                 app:sbv_segment_bg="false"
                 app:sbv_segment_gap_width="0dp"
                 app:sbv_show_description_text="true"
-                app:sbv_show_description_top_text="true"
+                app:sbv_show_description_top_text="false"
                 app:sbv_show_segment_text="false"
                 app:sbv_side_style="rounded"
                 app:sbv_side_text_style="oneSided"
@@ -463,6 +463,29 @@
                 app:sbv_sliderImg="@mipmap/ic_weigh_slider"
                 app:sbv_sliderType="Slider"
                 app:sbv_segment_rule="scale"
+                android:layout_marginTop="10dp"
+                android:background="@color/black_54"
+                />
+
+            <com.zhouyou.view.segmentedbar.demo.view.CircleThumbSegmentedBarView
+                android:id="@+id/slider_type_bar_view_thumb4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:sbv_bar_height="15dp"
+                app:sbv_description_text_color="#c5bfbf"
+                app:sbv_description_text_size="14sp"
+                app:sbv_segment_bg="false"
+                app:sbv_segment_gap_width="0dp"
+                app:sbv_segment_rule="average"
+                app:sbv_show_description_text="true"
+                app:sbv_show_segment_text="false"
+                app:sbv_side_style="normal"
+                app:sbv_sliderType="Custom"
+                app:sbv_thumb_h="40dp"
+                app:sbv_thumb_w="32dp"
+                app:sbv_description_box_height="35dp"
+                app:sbv_description_highlight_text_color="#461d18"
                 />
         </LinearLayout>
 
