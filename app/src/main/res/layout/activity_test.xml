@@ -118,6 +118,26 @@
         app:sbv_thumb_h="30dp"
         app:sbv_thumb_w="34dp"
         />
+    <com.zhouyou.view.segmentedbar.demo.view.RectThumbSegmentedBarView
+        android:id="@+id/slider_type_bar_view_thumb6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:sbv_bar_height="15dp"
+        app:sbv_description_box_height="35dp"
+        app:sbv_description_highlight_text_color="#461d18"
+        app:sbv_description_text_color="#c5bfbf"
+        app:sbv_description_text_size="14sp"
+        app:sbv_segment_bg="false"
+        app:sbv_segment_gap_width="0dp"
+        app:sbv_segment_rule="scale"
+        app:sbv_show_description_text="true"
+        app:sbv_show_segment_text="false"
+        app:sbv_side_style="normal"
+        app:sbv_sliderType="Custom"
+        app:sbv_thumb_h="30dp"
+        app:sbv_thumb_w="34dp"
+        />
 
     <Button
         android:layout_width="match_parent"

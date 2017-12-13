@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class TestActivity extends AppCompatActivity {
-    private SegmentedBarView barView1,barView2,barView3,barView4,barView5;
+    private SegmentedBarView barView1,barView2,barView3,barView4,barView5,barView6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,7 @@ public class TestActivity extends AppCompatActivity {
         createBarViewWithOilSliderType3();
         createBarViewWithOilSliderType4();
         createBarViewWithOilSliderType5();
+        createBarViewWithOilSliderType6();
     }
 
     //设置滑块类型
@@ -143,10 +144,33 @@ public class TestActivity extends AppCompatActivity {
         barView5.setValueSegment(2);
         barView5.setSegments(segments);
     }
+    //设置滑块类型 --数字分段
+    private void createBarViewWithOilSliderType6() {
+        barView6 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb6);
+        int colors[] = new int[]{Color.parseColor("#fae8d7"), Color.parseColor("#f3d0c0"),Color.parseColor("#deb1a0")
+                ,Color.parseColor("#cda485"),Color.parseColor("#bc9375"),Color.parseColor("#8a6145")};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment(0.0f,20.0f, "亮白", colors[0]);
+        segments.add(segment1);
+        Segment segment2 = new Segment(20.0f,40.0f, "红润", colors[1]);
+        segments.add(segment2);
+        Segment segment3 = new Segment(40.0f,60.0f, "自然", colors[2]);
+        segments.add(segment3);
+        Segment segment4 = new Segment(60.0f,80.0f, "小麦", colors[3]);
+        segments.add(segment4);
+        Segment segment5 = new Segment(80.0f,100.0f, "暗哑", colors[4]);
+        segments.add(segment5);
+        Segment segment6 = new Segment(100.0f,120.0f, "黝黑", colors[5]);
+        segments.add(segment6);
+        barView6.setShowDescriptionText(true);
+        barView6.setValue(0.0f);
+        barView6.setSegments(segments);
+    }
     
     public void onProgress(View view){
         barView1.setValue(Float.valueOf(new Random().nextInt(90)));
         barView2.setValue(Float.valueOf(new Random().nextInt(9)));
+        barView6.setValue(Float.valueOf(new Random().nextInt(120)));
         progress(barView3);
         progress(barView4);
         progress(barView5);
