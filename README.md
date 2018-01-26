@@ -203,6 +203,3 @@ dependencies {
 
 ## 感谢
 在此感谢[SegmentedBarView-Android](https://github.com/gspd-mobi/SegmentedBarView-Android)作者提供的开源库，对于本库的完成提供了很大的帮助。
-
-
-
