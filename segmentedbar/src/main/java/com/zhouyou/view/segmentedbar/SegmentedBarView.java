@@ -858,7 +858,8 @@ public class SegmentedBarView extends View {
                 if (text.contains("&")) {//必须是&分割
                     String[] texts = TextUtils.split(text, "&");
                     canvas.drawText(texts[0], left, (top + bottom) / 2 + textOffset, paint);
-                    canvas.drawText(texts[1], right - textWidth / 2, (top + bottom) / 2 + textOffset, paint);
+                    float rightTextWidth = paint.measureText(texts[1]);
+                    canvas.drawText(texts[1], right - rightTextWidth / 2, (top + bottom) / 2 + textOffset, paint);
                     return;
                 }
             }
