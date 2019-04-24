@@ -37,6 +37,7 @@
         <attr name="sbv_description_box_top_height" format="dimension" />
         <attr name="sbv_sliderImg" format="reference" />
         <attr name="sbv_segment_gap_width" format="dimension" />
+        <attr name="sbv_segment_gap_color" format="color" />
         <attr name="sbv_value_sign_round" format="dimension" />
         <attr name="sbv_thumb_w" format="dimension" />
         <attr name="sbv_thumb_h" format="dimension" />

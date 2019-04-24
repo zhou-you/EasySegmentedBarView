@@ -83,6 +83,7 @@ public class SegmentedBarView extends View {
     private int arrowHeight;                                     //滑块箭头的高度
     private int arrowWidth;                                      //滑块箭头的宽度
     private int gapWidth;                                        //分段控件之间的间隔
+    private int gapColor;                                        //分段控件之间的间隔颜色
     private int barHeight;                                       //分段条的高度
 
     private List<Segment> segments;                             //分段控件集合
@@ -175,6 +176,7 @@ public class SegmentedBarView extends View {
             arrowHeight = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_arrow_height, resources.getDimensionPixelSize(R.dimen.sbv_arrow_height));
             arrowWidth = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_arrow_width, resources.getDimensionPixelSize(R.dimen.sbv_arrow_width));
             gapWidth = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_segment_gap_width, resources.getDimensionPixelSize(R.dimen.sbv_segment_gap_width));
+            gapColor = a.getColor(R.styleable.SegmentedBarView_sbv_segment_gap_color, Color.WHITE);
             valueSignRound = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_value_sign_round, resources.getDimensionPixelSize(R.dimen.sbv_value_sign_round));
             descriptionBoxHeight = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_description_box_height, resources.getDimensionPixelSize(R.dimen.sbv_description_box_height));
             descriptionBoxTopHeight = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_description_box_top_height, resources.getDimensionPixelSize(R.dimen.sbv_description_box_height));
@@ -456,14 +458,24 @@ public class SegmentedBarView extends View {
         if (!(value != null && (value >= minValue && value <= maxValue))) {
             return;
         }
+
+        int index = 0;
+        for (int i = 0; i < segments.size(); i++) {
+            if (value >= segments.get(i).getMinValue() && value <= segments.get(i).getMaxValue()) {
+                index = i;
+                break;
+            }
+        }
+
         float valueSignCenterPercent = (value - minValue) / (maxValue - minValue);
         float spacing = maxValue - minValue;
         float singleSegmentWidth = getContentWidth() * spacing / maxValue;
         float valueSignCenter = (int) (getPaddingLeft() + getXLeft() + valueSignCenterPercent * singleSegmentWidth);
-
+        float fraction=valueSignCenterPercent;
+        int new_color=getCurrentColor(fraction,segmentProgressColors[0],segmentProgressColors[1]);//根据进度动态计算结束颜色
         rectBounds.set(getPaddingLeft() + getXLeft(), valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop(), (int)
-                valueSignCenter+thembW/3, barHeight + valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop());
-        LinearGradient lg = new LinearGradient(rectBounds.left, rectBounds.top, rectBounds.right, rectBounds.bottom, segmentProgressColors[0], segmentProgressColors[1], Shader.TileMode.MIRROR);  //
+                valueSignCenter + thembW / 3 + gapWidth * index, barHeight + valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop());
+        LinearGradient lg = new LinearGradient(rectBounds.left, rectBounds.top, rectBounds.right, rectBounds.bottom, segmentProgressColors[0], new_color, Shader.TileMode.MIRROR);  //
         progressPaint.setShader(lg);
 
         barRoundingRadius = rectBounds.height() / 2;
@@ -587,7 +599,7 @@ public class SegmentedBarView extends View {
             segmentRight = getContentWidth() / valueMax * segment.getMaxValue();
             if (!isLeftSegment && isDrawSegmentBg) {
                 RectF mRectF = new RectF();
-                grapPaint.setColor(Color.WHITE);
+                grapPaint.setColor(gapColor);
                 mRectF.set((int) segmentLeft + getPaddingLeft() + getXLeft(), valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop(), (int) segmentLeft + getPaddingLeft() + getXLeft() + gapWidth,
                         barHeight + valueSignSpaceHeight() + descriptionBoxTopHeight() + getPaddingTop() + getXtop());
                 canvas.drawRect(mRectF, grapPaint);
@@ -598,7 +610,7 @@ public class SegmentedBarView extends View {
             segmentRight = segmentLeft + singleSegmentWidth;
             if (!isLeftSegment && isDrawSegmentBg) {
                 RectF mRectF = new RectF();
-                grapPaint.setColor(Color.WHITE);
+                grapPaint.setColor(gapColor);
                 mRectF.set((int) segmentLeft + getPaddingLeft() + getXLeft(), valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop(), (int) segmentLeft + getPaddingLeft() + getXLeft() + gapWidth,
                         barHeight + valueSignSpaceHeight() + descriptionBoxTopHeight() + getPaddingTop() + getXtop());
                 canvas.drawRect(mRectF, grapPaint);
@@ -1051,6 +1063,13 @@ public class SegmentedBarView extends View {
         requestLayout();
     }
 
+    ////在设置画背景时，开启了isDrawSegmentBg属性，才会起作用,正常情况下只是设置间隔空白，不会给间隔设置颜色（只适用于背景渐变分段的特殊情况）
+    public void setGapColor(int gapColor) {
+        this.gapColor = gapColor;
+        invalidate();
+        requestLayout();
+    }
+
     public void setBarHeight(int barHeight) {
         this.barHeight = barHeight;
         invalidate();
@@ -1250,6 +1269,38 @@ public class SegmentedBarView extends View {
      */
     public int getCurrentBarColor() {
         return currentBarColor;
+    }
+
+    /**
+     * 根据fraction值来计算当前的颜色。 fraction值范围  0f-1f
+     */
+    private int getCurrentColor(float fraction, int startColor, int endColor) {
+        int redCurrent;
+        int blueCurrent;
+        int greenCurrent;
+        int alphaCurrent;
+
+        int redStart = Color.red(startColor);
+        int blueStart = Color.blue(startColor);
+        int greenStart = Color.green(startColor);
+        int alphaStart = Color.alpha(startColor);
+
+        int redEnd = Color.red(endColor);
+        int blueEnd = Color.blue(endColor);
+        int greenEnd = Color.green(endColor);
+        int alphaEnd = Color.alpha(endColor);
+
+        int redDifference = redEnd - redStart;
+        int blueDifference = blueEnd - blueStart;
+        int greenDifference = greenEnd - greenStart;
+        int alphaDifference = alphaEnd - alphaStart;
+
+        redCurrent = (int) (redStart + fraction * redDifference);
+        blueCurrent = (int) (blueStart + fraction * blueDifference);
+        greenCurrent = (int) (greenStart + fraction * greenDifference);
+        alphaCurrent = (int) (alphaStart + fraction * alphaDifference);
+
+        return Color.argb(alphaCurrent, redCurrent, greenCurrent, blueCurrent);
     }
 
     public static Builder builder(Context context) {
