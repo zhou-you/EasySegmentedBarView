@@ -41,6 +41,7 @@ public class TestActivity extends AppCompatActivity {
         createBarViewTest5();
         createBarViewTest6();
         createBarViewTest7();
+        createBarViewTest8();
     }
 
     //设置滑块类型
@@ -189,6 +190,23 @@ public class TestActivity extends AppCompatActivity {
         barView.setShowDescriptionText(true);
         barView.setValue(60.0f);
         barView.setSegments(segments);
+    }
+
+    private void createBarViewTest8() {
+        SegmentedBarView barView1 = (SegmentedBarView) findViewById(R.id.slider_type_bar_view_thumb8);
+        int colors[] = new int[]{Color.parseColor("#a8db62"), Color.parseColor("#8bc93a"), Color.parseColor("#72ab2a")};
+        ArrayList<Segment> segments = new ArrayList<>();
+        Segment segment1 = new Segment(0.0f, 25.0f, "", Color.TRANSPARENT).setDescriptionText("00").setTopDescriptionText("缺油");
+        segments.add(segment1);
+        //中间显示用40%&60%  “&” 分割
+        Segment segment2 = new Segment(25.0f, 75.0f, "", Color.TRANSPARENT).setDescriptionText("15.0%&45.0%").setTopDescriptionText("正常");
+        segments.add(segment2);
+        Segment segment3 = new Segment(75.0f, 100.0f, "", Color.TRANSPARENT).setDescriptionText("100%").setTopDescriptionText("严重");
+        segments.add(segment3);
+        barView1.setShowDescriptionText(true);
+        barView1.setValue(30.6f);
+        barView1.setSegments(segments);
+        barView1.setGradientBgSegmentColor(Color.RED,Color.BLUE);
     }
 
     public void onProgress(View view) {
