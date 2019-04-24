@@ -111,6 +111,7 @@ public class SegmentedBarView extends View {
     private int descriptionAlign;                                //bar条目底部描述文本对齐方式
     private int descriptionTopAlign;                             //bar条目顶部描述文本对齐方式
     private int descriptionTextSize;                             //描述文字字体大小
+    private int descriptionHightlightTextSize = -1;                   //描述文字高亮字体大小
     private int descriptionBoxHeight;                            //底部描述文本所占的高度
     private int descriptionBoxTopHeight;                         //底部描述文本距分段条的距离
     private Paint descriptionTextPaint;
@@ -164,6 +165,7 @@ public class SegmentedBarView extends View {
             segmentTextSize = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_segment_text_size, resources.getDimensionPixelSize(R.dimen.sbv_segment_text_size));
             valueTextSize = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_value_text_size, resources.getDimensionPixelSize(R.dimen.sbv_value_text_size));
             descriptionTextSize = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_description_text_size, resources.getDimensionPixelSize(R.dimen.sbv_description_text_size));
+            descriptionHightlightTextSize = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_description_hightlight_text_size, -1);
             barHeight = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_bar_height, resources.getDimensionPixelSize(R.dimen.sbv_bar_height));
             valueSignHeight = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_value_sign_height, resources.getDimensionPixelSize(R.dimen.sbv_value_sign_height));
             valueSignWidth = a.getDimensionPixelSize(R.styleable.SegmentedBarView_sbv_value_sign_width, resources.getDimensionPixelSize(R.dimen.sbv_value_sign_width));
@@ -667,8 +669,8 @@ public class SegmentedBarView extends View {
 
         //Drawing segment description text
         if (showDescriptionText) {
-            descriptionTextPaint.setTextSize(descriptionTextSize);
-            descriptionTextPaint.setColor(isValueCenter ? descriptionHighlightTextColor == -1 ? descriptionTextColor : descriptionHighlightTextColor : descriptionTextColor);
+            descriptionTextPaint.setTextSize(isValueCenter && descriptionAlign == ALIGN_CENTER ? descriptionHightlightTextSize == -1 ? descriptionTextSize : descriptionHightlightTextSize : descriptionTextSize);
+            descriptionTextPaint.setColor(isValueCenter && descriptionAlign == ALIGN_CENTER ? descriptionHighlightTextColor == -1 ? descriptionTextColor : descriptionHighlightTextColor : descriptionTextColor);
             switch (descriptionAlign) {
                 case ALIGN_CENTER:
                     drawTextCentredInRectWithSides(canvas, descriptionTextPaint, segment.getDescriptionText(),
@@ -684,11 +686,8 @@ public class SegmentedBarView extends View {
         }
 
         if (showDescriptionTopText) {
-            if (descriptionTopTextColor == -1) {//说明没有赋值颜色
-                descriptionTopTextColor = descriptionTextColor;
-            }
-            descriptionTextPaint.setTextSize(descriptionTextSize);
-            descriptionTextPaint.setColor(isValueCenter ? descriptionHighlightTextColor == -1 ? descriptionTopTextColor : descriptionHighlightTextColor : descriptionTopTextColor);
+            descriptionTextPaint.setTextSize(isValueCenter && descriptionTopAlign == ALIGN_CENTER ? descriptionHightlightTextSize == -1 ? descriptionTextSize : descriptionHightlightTextSize : descriptionTextSize);
+            descriptionTextPaint.setColor(isValueCenter && descriptionTopAlign == ALIGN_CENTER ? descriptionHighlightTextColor == -1 ? descriptionTopTextColor : descriptionHighlightTextColor : descriptionTopTextColor);
             switch (descriptionTopAlign) {
                 case ALIGN_CENTER:
                     drawTextCentredInRectWithSides(canvas, descriptionTextPaint, segment.getTopDescriptionText(),

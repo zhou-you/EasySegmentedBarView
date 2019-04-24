@@ -21,6 +21,7 @@
         <attr name="sbv_empty_segment_background" format="color"/>
 
         <attr name="sbv_description_text_size" format="dimension"/>
+        <attr name="sbv_description_hightlight_text_size" format="dimension"/>
         <attr name="sbv_value_text_size" format="dimension"/>
         <attr name="sbv_segment_text_size" format="dimension"/>
 
