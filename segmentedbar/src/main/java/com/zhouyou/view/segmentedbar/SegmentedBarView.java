@@ -38,6 +38,7 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.text.DecimalFormat;
@@ -61,6 +62,7 @@ public class SegmentedBarView extends View {
     private int[] segmentBgColors = new int[]{Color.RED, Color.BLUE};  //设置渐变的背景颜色
     private RectF roundRectangleBounds;
     private Paint fillPaint;
+    private Paint signPaint;
     private Paint signborderPaint;
 
     private int valueSignHeight;                                 //滑块的高度
@@ -104,6 +106,7 @@ public class SegmentedBarView extends View {
     private TextPaint valueTextPaint;                            //滑块数值文本
 
     private int descriptionTextColor = Color.DKGRAY;             //描述文字字体颜色，默认灰色
+    private int descriptionTopTextColor = -1;             //描述文字字体颜色，默认灰色
     private int descriptionHighlightTextColor;                   //描述文字高亮字体颜色，默认：descriptionTextColor
     private int descriptionAlign;                                //bar条目底部描述文本对齐方式
     private int descriptionTopAlign;                             //bar条目顶部描述文本对齐方式
@@ -191,6 +194,7 @@ public class SegmentedBarView extends View {
             int segment_bg_startcolor = a.getColor(R.styleable.SegmentedBarView_sbv_segment_startcolor, context.getResources().getColor(R.color.sbv_segment_bg_startcolor));
             value_sign_border_color = a.getColor(R.styleable.SegmentedBarView_sbv_value_sign_border_color, context.getResources().getColor(R.color.sbv_value_sign_boder_color));
             descriptionTextColor = a.getColor(R.styleable.SegmentedBarView_sbv_description_text_color, descriptionTextColor);
+            descriptionTopTextColor = a.getColor(R.styleable.SegmentedBarView_sbv_description_top_text_color, descriptionTextColor);
             descriptionHighlightTextColor = a.getColor(R.styleable.SegmentedBarView_sbv_description_highlight_text_color, -1);
             segmentBgColors[0] = segment_bg_startcolor;
             int segment_end_endtcolor = a.getColor(R.styleable.SegmentedBarView_sbv_segment_endcolor, context.getResources().getColor(R.color.sbv_segment_bg_endcolor));
@@ -235,6 +239,10 @@ public class SegmentedBarView extends View {
         fillPaint.setStyle(Paint.Style.FILL);
         fillPaint.setAntiAlias(true);
 
+        signPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        signPaint.setStyle(Paint.Style.FILL);
+        signPaint.setAntiAlias(true);
+
         signborderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         signborderPaint.setStyle(Paint.Style.STROKE);
         signborderPaint.setStrokeWidth(value_sign_border_size);
@@ -243,6 +251,7 @@ public class SegmentedBarView extends View {
 
         emptyPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         emptyPaint.setStyle(Paint.Style.FILL);
+        emptyPaint.setAntiAlias(true);
 
         grapPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         grapPaint.setStyle(Paint.Style.FILL);
@@ -296,10 +305,10 @@ public class SegmentedBarView extends View {
                     break;
                 case SLIDER://设置滑块 覆盖图片
                     if (!isShowThumb) throw new RuntimeException("plase add sbv_sliderImg!!!!!");
-                    drawSliderImg(canvas, mBitmap, thembW, thembH, valueSignCenter, rectBounds.top - getXtop() + thembH / 2, fillPaint);
+                    drawSliderImg(canvas, mBitmap, thembW, thembH, valueSignCenter, rectBounds.top - getXtop() + thembH / 2, signPaint);
                     break;
                 case CUSTOM://设置滑块 自定义覆盖
-                    drawCustomThumb(canvas, thembW, thembH, valueSignCenter, rectBounds.top - getXtop() + thembH / 2, currentBarColor, fillPaint);
+                    drawCustomThumb(canvas, thembW, thembH, valueSignCenter, rectBounds.top - getXtop() + thembH / 2, currentBarColor, signPaint);
                     break;
             }
         }
@@ -421,8 +430,7 @@ public class SegmentedBarView extends View {
         int segmentsSize = 1;
         float singleSegmentWidth = getContentWidth() / segmentsSize;
         rectBounds.set(getPaddingLeft() + getXLeft(), valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop(), (int)
-                singleSegmentWidth + getPaddingRight(), barHeight + valueSignSpaceHeight() + descriptionBoxTopHeight() + getPaddingTop());
-
+                getPaddingLeft() + getXLeft() + getContentWidth(), barHeight + valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop());
         LinearGradient lg = new LinearGradient(rectBounds.left, rectBounds.top, rectBounds.right, rectBounds.bottom, segmentBgColors[0], segmentBgColors[1], Shader.TileMode.MIRROR);  //
         emptyPaint.setShader(lg);
 
@@ -500,7 +508,7 @@ public class SegmentedBarView extends View {
             if (!isLeftSegment && isDrawSegmentBg) {
                 RectF mRectF = new RectF();
                 grapPaint.setColor(Color.WHITE);
-                mRectF.set(temp, valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop(), temp + gapWidth,
+                mRectF.set((int) segmentLeft + getPaddingLeft() + getXLeft(), valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop(), (int) segmentLeft + getPaddingLeft() + getXLeft() + gapWidth,
                         barHeight + valueSignSpaceHeight() + descriptionBoxTopHeight() + getPaddingTop() + getXtop());
                 canvas.drawRect(mRectF, grapPaint);
             }
@@ -511,7 +519,7 @@ public class SegmentedBarView extends View {
             if (!isLeftSegment && isDrawSegmentBg) {
                 RectF mRectF = new RectF();
                 grapPaint.setColor(Color.WHITE);
-                mRectF.set(segmentLeft, valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop(), segmentLeft + gapWidth,
+                mRectF.set((int) segmentLeft + getPaddingLeft() + getXLeft(), valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop(), (int) segmentLeft + getPaddingLeft() + getXLeft() + gapWidth,
                         barHeight + valueSignSpaceHeight() + descriptionBoxTopHeight() + getPaddingTop() + getXtop());
                 canvas.drawRect(mRectF, grapPaint);
             }
@@ -660,7 +668,7 @@ public class SegmentedBarView extends View {
         //Drawing segment description text
         if (showDescriptionText) {
             descriptionTextPaint.setTextSize(descriptionTextSize);
-            descriptionTextPaint.setColor(isValueCenter?descriptionHighlightTextColor==-1?descriptionTextColor:descriptionHighlightTextColor:descriptionTextColor);
+            descriptionTextPaint.setColor(isValueCenter ? descriptionHighlightTextColor == -1 ? descriptionTextColor : descriptionHighlightTextColor : descriptionTextColor);
             switch (descriptionAlign) {
                 case ALIGN_CENTER:
                     drawTextCentredInRectWithSides(canvas, descriptionTextPaint, segment.getDescriptionText(),
@@ -676,8 +684,11 @@ public class SegmentedBarView extends View {
         }
 
         if (showDescriptionTopText) {
+            if (descriptionTopTextColor == -1) {//说明没有赋值颜色
+                descriptionTopTextColor = descriptionTextColor;
+            }
             descriptionTextPaint.setTextSize(descriptionTextSize);
-            descriptionTextPaint.setColor(isValueCenter?descriptionHighlightTextColor==-1?descriptionTextColor:descriptionHighlightTextColor:descriptionTextColor);
+            descriptionTextPaint.setColor(isValueCenter ? descriptionHighlightTextColor == -1 ? descriptionTopTextColor : descriptionHighlightTextColor : descriptionTopTextColor);
             switch (descriptionTopAlign) {
                 case ALIGN_CENTER:
                     drawTextCentredInRectWithSides(canvas, descriptionTextPaint, segment.getTopDescriptionText(),
@@ -702,7 +713,7 @@ public class SegmentedBarView extends View {
                 getPaddingTop(),
                 valueSignCenter + valueSignWidth / 2,
                 valueSignHeight - arrowHeight + getPaddingTop());
-        fillPaint.setColor(valueSignColor);
+        signPaint.setColor(valueSignColor);
 
         // Move if not fit horizontal
         if (valueSignBounds.left < getPaddingLeft()) {
@@ -722,7 +733,7 @@ public class SegmentedBarView extends View {
                 roundRectangleBounds,
                 valueSignRound,
                 valueSignRound,
-                fillPaint
+                signPaint
         );
         if (show_sign_boder) {
             canvas.drawRoundRect(
@@ -748,7 +759,7 @@ public class SegmentedBarView extends View {
                     getPaddingTop());
             point3.set(valueSignCenter + difference, valueSignSpaceHeight + getPaddingTop());
 
-            drawTriangle(canvas, point1, point2, point3, fillPaint);
+            drawTriangle(canvas, point1, point2, point3, signPaint);
             if (show_sign_boder) {
                 drawTriangleBoder(canvas, point1, point2, point3, signborderPaint);
             }
@@ -1075,6 +1086,12 @@ public class SegmentedBarView extends View {
         requestLayout();
     }
 
+    public void setDescriptionTopTextColor(int descriptionTopTextColor) {
+        this.descriptionTopTextColor = descriptionTopTextColor;
+        invalidate();
+        requestLayout();
+    }
+
     /**
      * 设置显示的数值内容
      *
@@ -1141,7 +1158,7 @@ public class SegmentedBarView extends View {
     /**
      * 获取当前bar条所在位置的颜色
      */
-    public int getCurrentBarColor(){
+    public int getCurrentBarColor() {
         return currentBarColor;
     }
 
@@ -1246,6 +1263,11 @@ public class SegmentedBarView extends View {
 
         public Builder descriptionTextColor(int descriptionTextColor) {
             SegmentedBarView.this.descriptionTextColor = descriptionTextColor;
+            return this;
+        }
+
+        public Builder descriptionTopTextColor(int descriptionTopTextColor) {
+            SegmentedBarView.this.descriptionTopTextColor = descriptionTopTextColor;
             return this;
         }
 
