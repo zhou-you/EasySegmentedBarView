@@ -60,6 +60,7 @@ import java.util.List;
  */
 public class SegmentedBarView extends View {
     private int[] segmentBgColors = new int[]{Color.RED, Color.BLUE};  //设置渐变的背景颜色
+    private int[] segmentProgressColors = new int[]{Color.BLUE, Color.YELLOW};  //设置渐变的背景颜色
     private RectF roundRectangleBounds;
     private Paint fillPaint;
     private Paint signPaint;
@@ -88,6 +89,7 @@ public class SegmentedBarView extends View {
     private String unit;
     private Paint emptyPaint;
     private Paint grapPaint;
+    private Paint progressPaint;
     private DecimalFormat formatter;
     private String emptySegmentText;                             //分段控件数据为空时显示的内容，List<Segment> segments 为null或者size是0
     private int barRoundingRadius = 0;
@@ -134,6 +136,7 @@ public class SegmentedBarView extends View {
     private Point point3;
     private Rect segmentRect;
     private boolean isDrawSegmentBg = false;
+    private boolean isDrawSegmentProgress = false;
     private int value_sign_border_size;
     private boolean show_sign_boder;
     private int sideRule;                                          //设置分段规则
@@ -192,15 +195,20 @@ public class SegmentedBarView extends View {
                 emptySegmentText = resources.getString(R.string.sbv_empty);
             }
             isDrawSegmentBg = a.getBoolean(R.styleable.SegmentedBarView_sbv_segment_bg, false);
+            isDrawSegmentProgress = a.getBoolean(R.styleable.SegmentedBarView_sbv_segment_progress, false);
             show_sign_boder = a.getBoolean(R.styleable.SegmentedBarView_sbv_show_sign_boder, false);
-            int segment_bg_startcolor = a.getColor(R.styleable.SegmentedBarView_sbv_segment_startcolor, context.getResources().getColor(R.color.sbv_segment_bg_startcolor));
             value_sign_border_color = a.getColor(R.styleable.SegmentedBarView_sbv_value_sign_border_color, context.getResources().getColor(R.color.sbv_value_sign_boder_color));
             descriptionTextColor = a.getColor(R.styleable.SegmentedBarView_sbv_description_text_color, descriptionTextColor);
             descriptionTopTextColor = a.getColor(R.styleable.SegmentedBarView_sbv_description_top_text_color, descriptionTextColor);
             descriptionHighlightTextColor = a.getColor(R.styleable.SegmentedBarView_sbv_description_highlight_text_color, -1);
+            int segment_bg_startcolor = a.getColor(R.styleable.SegmentedBarView_sbv_segment_bg_startcolor, context.getResources().getColor(R.color.sbv_segment_bg_startcolor));
+            int segment_end_endtcolor = a.getColor(R.styleable.SegmentedBarView_sbv_segment_bg_endcolor, context.getResources().getColor(R.color.sbv_segment_bg_endcolor));
             segmentBgColors[0] = segment_bg_startcolor;
-            int segment_end_endtcolor = a.getColor(R.styleable.SegmentedBarView_sbv_segment_endcolor, context.getResources().getColor(R.color.sbv_segment_bg_endcolor));
             segmentBgColors[1] = segment_end_endtcolor;
+            int segment_progress_startcolor = a.getColor(R.styleable.SegmentedBarView_sbv_segment_progress_startcolor, context.getResources().getColor(R.color.sbv_segment_progress_startcolor));
+            int segment_progress_endcolor = a.getColor(R.styleable.SegmentedBarView_sbv_segment_progress_endcolor, context.getResources().getColor(R.color.sbv_segment_progress_endcolor));
+            segmentProgressColors[0] = segment_progress_startcolor;
+            segmentProgressColors[1] = segment_progress_endcolor;
             valueSignColor = a.getColor(R.styleable.SegmentedBarView_sbv_value_sign_background, context.getResources().getColor(R.color.sbv_value_sign_background));
             emptySegmentColor = a.getColor(R.styleable.SegmentedBarView_sbv_empty_segment_background, context.getResources().getColor(R.color.sbv_empty_segment_background));
             sideStyle = a.getInt(R.styleable.SegmentedBarView_sbv_side_style, SegmentedBarViewSideStyle.ROUNDED);
@@ -255,6 +263,10 @@ public class SegmentedBarView extends View {
         emptyPaint.setStyle(Paint.Style.FILL);
         emptyPaint.setAntiAlias(true);
 
+        progressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        progressPaint.setStyle(Paint.Style.FILL);
+        progressPaint.setAntiAlias(true);
+
         grapPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         grapPaint.setStyle(Paint.Style.FILL);
 
@@ -286,9 +298,14 @@ public class SegmentedBarView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         valueSignCenter = -1;
-        if (isDrawSegmentBg) {//是否画背景 默认：不画
+        if (isDrawSegmentBg) {//是否画背景 默认：不画 支持渐变，如果不需要渐变，startColor和endColor设置一样
             drawBgSegment(canvas);
         }
+
+        if (isDrawSegmentProgress) {//是否画进度，支持渐变，如果不需要渐变，startColor和endColor设置一样
+            drawProgressSegment(canvas);
+        }
+
         int segmentsSize = segments == null ? 0 : segments.size();
         if (segmentsSize > 0) {
             Segment lastSegment = segments.get(segments.size() - 1);
@@ -424,6 +441,67 @@ public class SegmentedBarView extends View {
             segmentTextPaint.setTextSize(segmentTextSize);
             drawTextCentredInRectWithSides(canvas, segmentTextPaint, textToShow, segmentRect.left, segmentRect.top,
                     segmentRect.right, segmentRect.bottom);
+        }
+    }
+
+    //是否需要画背景
+    private void drawProgressSegment(Canvas canvas) {
+        if (sideRule != SegmentedBarViewSideRule.SCALE) {//按比例分
+            return;
+        }
+
+        if (segments == null || segments.isEmpty()) return;//没有进度
+        float minValue = segments.get(0).getMinValue();
+        float maxValue = segments.get(segments.size() - 1).getMaxValue();
+        if (!(value != null && (value >= minValue && value <= maxValue))) {
+            return;
+        }
+        float valueSignCenterPercent = (value - minValue) / (maxValue - minValue);
+        float spacing = maxValue - minValue;
+        float singleSegmentWidth = getContentWidth() * spacing / maxValue;
+        float valueSignCenter = (int) (getPaddingLeft() + getXLeft() + valueSignCenterPercent * singleSegmentWidth);
+
+        rectBounds.set(getPaddingLeft() + getXLeft(), valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop(), (int)
+                valueSignCenter+thembW/3, barHeight + valueSignSpaceHeight() + getPaddingTop() + descriptionBoxTopHeight() + getXtop());
+        LinearGradient lg = new LinearGradient(rectBounds.left, rectBounds.top, rectBounds.right, rectBounds.bottom, segmentProgressColors[0], segmentProgressColors[1], Shader.TileMode.MIRROR);  //
+        progressPaint.setShader(lg);
+
+        barRoundingRadius = rectBounds.height() / 2;
+        if (barRoundingRadius > singleSegmentWidth / 2) {
+            sideStyle = SegmentedBarViewSideStyle.NORMAL;
+        }
+
+        segmentRect.set(rectBounds);
+        switch (sideStyle) {
+            case SegmentedBarViewSideStyle.ROUNDED:
+                roundRectangleBounds.set(rectBounds.left, rectBounds.top, rectBounds.right, rectBounds.bottom);
+                canvas.drawRoundRect(roundRectangleBounds, barRoundingRadius, barRoundingRadius, progressPaint);
+                break;
+            case SegmentedBarViewSideStyle.ANGLE:
+                rectBounds.set(barRoundingRadius + getPaddingLeft(),
+                        valueSignSpaceHeight() + descriptionBoxTopHeight() + getPaddingTop(),
+                        getWidth() - getPaddingRight() - barRoundingRadius,
+                        barHeight + valueSignSpaceHeight() + descriptionBoxTopHeight() + getPaddingTop());
+                canvas.drawRect(rectBounds, progressPaint
+                );
+                //Draw left triangle
+                point1.set(rectBounds.left - barRoundingRadius, rectBounds.top + barRoundingRadius);
+                point2.set(rectBounds.left, rectBounds.top);
+                point3.set(rectBounds.left, rectBounds.bottom);
+
+                drawTriangle(canvas, point1, point2, point3, progressPaint);
+
+                //Draw right triangle
+                point1.set(rectBounds.right + barRoundingRadius, rectBounds.top + barRoundingRadius);
+                point2.set(rectBounds.right, rectBounds.top);
+                point3.set(rectBounds.right, rectBounds.bottom);
+
+                drawTriangle(canvas, point1, point2, point3, progressPaint);
+                break;
+            case SegmentedBarViewSideStyle.NORMAL:
+                canvas.drawRect(rectBounds, progressPaint);
+            default:
+                break;
         }
     }
 
@@ -1035,6 +1113,19 @@ public class SegmentedBarView extends View {
     public void setGradientBgSegmentColor(int startColor, int endColor) {
         this.segmentBgColors[0] = startColor;
         this.segmentBgColors[1] = endColor;
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * 只有按照比例分段才有进度
+     *
+     * @param startColor
+     * @param endColor
+     */
+    public void setGradientProgressSegmentColor(int startColor, int endColor) {
+        this.segmentProgressColors[0] = startColor;
+        this.segmentProgressColors[1] = endColor;
         invalidate();
         requestLayout();
     }
