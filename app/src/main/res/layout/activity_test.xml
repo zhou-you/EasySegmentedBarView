@@ -201,7 +201,7 @@
                 app:sbv_bar_height="5dp"
                 app:sbv_descriptionAlign="Both"
                 app:sbv_descriptionTopAlign="Center"
-                app:sbv_description_highlight_text_color="#ff0000"
+                app:sbv_description_highlight_text_color="#ffffff"
                 app:sbv_description_hightlight_text_size="16sp"
                 app:sbv_description_text_color="#ffffff"
                 app:sbv_description_text_size="13sp"

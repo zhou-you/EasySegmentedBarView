@@ -110,7 +110,7 @@ public class SegmentedBarView extends View {
 
     private int descriptionTextColor = Color.DKGRAY;             //描述文字字体颜色，默认灰色
     private int descriptionTopTextColor = -1;             //描述文字字体颜色，默认灰色
-    private int descriptionHighlightTextColor;                   //描述文字高亮字体颜色，默认：descriptionTextColor
+    private int descriptionHighlightTextColor=65536;                   //描述文字高亮字体颜色，默认：descriptionTextColor
     private int descriptionAlign;                                //bar条目底部描述文本对齐方式
     private int descriptionTopAlign;                             //bar条目顶部描述文本对齐方式
     private int descriptionTextSize;                             //描述文字字体大小
@@ -202,7 +202,7 @@ public class SegmentedBarView extends View {
             value_sign_border_color = a.getColor(R.styleable.SegmentedBarView_sbv_value_sign_border_color, context.getResources().getColor(R.color.sbv_value_sign_boder_color));
             descriptionTextColor = a.getColor(R.styleable.SegmentedBarView_sbv_description_text_color, descriptionTextColor);
             descriptionTopTextColor = a.getColor(R.styleable.SegmentedBarView_sbv_description_top_text_color, descriptionTextColor);
-            descriptionHighlightTextColor = a.getColor(R.styleable.SegmentedBarView_sbv_description_highlight_text_color, -1);
+            descriptionHighlightTextColor = a.getColor(R.styleable.SegmentedBarView_sbv_description_highlight_text_color, 65536);
             int segment_bg_startcolor = a.getColor(R.styleable.SegmentedBarView_sbv_segment_bg_startcolor, context.getResources().getColor(R.color.sbv_segment_bg_startcolor));
             int segment_end_endtcolor = a.getColor(R.styleable.SegmentedBarView_sbv_segment_bg_endcolor, context.getResources().getColor(R.color.sbv_segment_bg_endcolor));
             segmentBgColors[0] = segment_bg_startcolor;
@@ -760,7 +760,7 @@ public class SegmentedBarView extends View {
         //Drawing segment description text
         if (showDescriptionText) {
             descriptionTextPaint.setTextSize(isValueCenter && descriptionAlign == ALIGN_CENTER ? descriptionHightlightTextSize == -1 ? descriptionTextSize : descriptionHightlightTextSize : descriptionTextSize);
-            descriptionTextPaint.setColor(isValueCenter && descriptionAlign == ALIGN_CENTER ? descriptionHighlightTextColor == -1 ? descriptionTextColor : descriptionHighlightTextColor : descriptionTextColor);
+            descriptionTextPaint.setColor(isValueCenter && descriptionAlign == ALIGN_CENTER ? descriptionHighlightTextColor == 65536 ? descriptionTextColor : descriptionHighlightTextColor : descriptionTextColor);
             switch (descriptionAlign) {
                 case ALIGN_CENTER:
                     drawTextCentredInRectWithSides(canvas, descriptionTextPaint, segment.getDescriptionText(),
@@ -777,7 +777,7 @@ public class SegmentedBarView extends View {
 
         if (showDescriptionTopText) {
             descriptionTextPaint.setTextSize(isValueCenter && descriptionTopAlign == ALIGN_CENTER ? descriptionHightlightTextSize == -1 ? descriptionTextSize : descriptionHightlightTextSize : descriptionTextSize);
-            descriptionTextPaint.setColor(isValueCenter && descriptionTopAlign == ALIGN_CENTER ? descriptionHighlightTextColor == -1 ? descriptionTopTextColor : descriptionHighlightTextColor : descriptionTopTextColor);
+            descriptionTextPaint.setColor(isValueCenter && descriptionTopAlign == ALIGN_CENTER ? descriptionHighlightTextColor == 65536 ? descriptionTopTextColor : descriptionHighlightTextColor : descriptionTopTextColor);
             switch (descriptionTopAlign) {
                 case ALIGN_CENTER:
                     drawTextCentredInRectWithSides(canvas, descriptionTextPaint, segment.getTopDescriptionText(),
