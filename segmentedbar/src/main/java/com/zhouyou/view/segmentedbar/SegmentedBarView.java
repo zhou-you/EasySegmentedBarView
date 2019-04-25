@@ -377,7 +377,6 @@ public class SegmentedBarView extends View {
      * @param paint   画笔paint
      */
     protected void drawCustomThumb(Canvas canvas, int thumbW, int thumbH, float centerX, float centerY, int color, Paint paint) {
-        setLayerType(LAYER_TYPE_SOFTWARE, null);
         paint.setColor(color);
         int r = Math.max(thumbH, thumbW) / 2;
         paint.setMaskFilter(new BlurMaskFilter(5, BlurMaskFilter.Blur.SOLID));
